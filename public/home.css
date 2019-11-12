@@ -1,0 +1,17 @@
+a
+{
+    border-radius: 0px;
+    background-color:#000000;
+}
+
+.bg-dark
+{
+    background-color:#000000 !important;
+}
+
+.text-color
+{
+    color: #F7CE00;
+    border-color: #F7CE00 !important;
+    border-radius: 0px;
+}
