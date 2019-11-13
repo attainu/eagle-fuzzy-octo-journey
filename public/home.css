@@ -1,17 +1,76 @@
-a
-{
-    border-radius: 0px;
-    background-color:#000000;
-}
-
 .bg-dark
 {
     background-color:#000000 !important;
 }
 
-.text-color
+.button-decoration
 {
     color: #F7CE00;
     border-color: #F7CE00 !important;
+    border-radius: 0px;
+}
+
+.button-decoration:hover
+{
+    color: black;
+    background-color: #F7CE00;
+}
+
+.button-decoration a 
+{
+    color: #F7CE00;
+    text-decoration: none;
+}
+
+.button-decoration a:hover
+{
+    color: black;
+}
+
+section {
+    background-image: url("1.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-size:  cover; 
+   }
+
+.signup {
+    background-image: url("signup.jpeg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-size:  cover; 
+   }
+
+   .bg-login
+   {
+       background-color: rgba(247, 206, 0, 1);
+       color: black;
+   }
+
+   .form-control
+   {
+       border-radius: 0px !important;
+   }
+
+   .login-decoration
+{
+    color: #000000;
+    border-color: #000000 !important;
+    border-radius: 0px;
+}
+
+.login-decoration:hover
+{
+    color: #F7CE00;
+    background-color: #000000;
+}
+
+.color
+{
+    color: #000066;
+}
+
+.social-button
+{
     border-radius: 0px;
 }

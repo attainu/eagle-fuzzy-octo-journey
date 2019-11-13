@@ -20,8 +20,18 @@ app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
 app.get('/', function (request, response) {
-    response.render('home');
+    response.render('home',{title : "Home"});
+});
+
+app.get('/login', function (request, response) {
+    response.render('login',{title : "Login"});
+});
+
+app.get('/signup', function (request, response) {
+    response.render('signup',{title : "Sign Up"});
 });
 
 
-app.listen(PORT);
+app.listen(PORT,function(){
+    console.log("application listen at Port:" , PORT);
+});
