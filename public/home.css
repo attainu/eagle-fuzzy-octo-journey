@@ -7,7 +7,25 @@
 {
     color: #F7CE00;
     border-color: #F7CE00 !important;
+    background-color: #000000;
     border-radius: 0px;
+}
+
+.button-decoration1
+{
+    color: #F7CE00;
+    background-color: #000000;
+    border-radius: 0px;
+}
+.button-decoration1:hover
+{
+    color: black;
+    background-color: #F7CE00;
+}
+
+.navbar-toggler-icon
+{
+    color: #F7CE00 !important;
 }
 
 .button-decoration:hover
@@ -26,11 +44,8 @@
 {
     color: black;
 }
-body
-{
-    background-color: #000000;
-}
-section {
+
+.login {
     background-image: url("1.jpg");
     background-color: #cccccc;
     background-repeat: no-repeat;
@@ -76,4 +91,34 @@ section {
 .social-button
 {
     border-radius: 0px;
+}
+
+.image-circle
+{
+    border-radius: 50%;
+}
+
+.user-text
+{
+    color: white;
+}
+
+.menu
+{
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+}
+
+.button-decoration2
+{
+    color: #000000;
+    border-color: #000000 !important;
+    border-radius: 0px;
+}
+
+.button-decoration2:hover
+{
+  color: #F7CE00;
+  background-color: #000000;
 }
