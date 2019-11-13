@@ -26,12 +26,15 @@
 {
     color: black;
 }
-
+body
+{
+    background-color: #000000;
+}
 section {
     background-image: url("1.jpg");
     background-color: #cccccc;
     background-repeat: no-repeat;
-    background-size:  cover; 
+    background-size:  cover;
    }
 
 .signup {
