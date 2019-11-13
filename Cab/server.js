@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
-const PORT = 2222;
+const authRoutes = require('./routes/auth-routes'); 
+const passportSetup = require('./config/google-oauth');
+const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded());
 app.use('/static', express.static('public'));
+
+app.use('/auth', authRoutes);
 
 const hbs = exphbs.create({
     extname : ".hbs"
@@ -14,7 +18,7 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
-app.get('/login', function(req, res){
+app.get('/', function(req, res){
     res.render('login');
 });
 
