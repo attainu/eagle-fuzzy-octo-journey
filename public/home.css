@@ -123,3 +123,12 @@
   background-color: #000000;
 }
 
+button
+{
+    border-radius: 0px !important;
+}
+
+a
+{
+    border-radius: 0px !important;
+}

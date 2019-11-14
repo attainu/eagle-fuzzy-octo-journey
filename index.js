@@ -35,6 +35,17 @@ app.get('/userhomepage', function (request, response) {
     response.render('userhomepage',{title : "User Homepage"});
 });
 
+app.get('/updateprofile', function (request, response) {
+    response.render('updateprofile',{title : "Update profile"});
+});
+
+app.get('/lastride', function (request, response) {
+    response.render('userlastride',{title : "Last Rides"});
+});
+
+app.get('/aboutus', function (request, response) {
+    response.render('aboutus',{title : "aboutus"});
+});
 
 app.listen(PORT,function(){
     console.log("application listen at Port:" , PORT);
