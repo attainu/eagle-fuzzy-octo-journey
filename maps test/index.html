@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+        #map {
+
+
+            height: 90%;
+            margin-top: 10px;
+
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-overlay {
+            margin-top: 60px;
+            width:90%;
+            height: 120px;
+            background : rgb(0, 0, 0);
+            opacity: 0.3;
+            border-radius: 10px;
+            
+            
+
+            position: absolute;
+            top: 0;
+            left: 2.5%;
+
+            z-index: 1;
+
+
+        }
+
+        .header-overlay2 {
+            margin-top: 70px;
+            width:80%;
+
+            position: absolute;
+            top: 0;
+            left: 7.5%;
+
+            z-index: 1;
+
+
+        }
+        .header-overlay3 {
+            margin-top: 120px;
+            width:80%;
+
+            position: absolute;
+            top: 0;
+            left: 7.5%;
+
+            z-index: 1;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Profile</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div  class="header-overlay">
+
+    
+    </div>
+    <div class="input-group mb-3 header-overlay2">
+        <input type="text" class="form-control" placeholder="Source" aria-label="Recipient's username"
+            aria-describedby="basic-addon2" id="destination">
+
+    </div>
+    <div class="input-group mb-3 header-overlay3">
+        <input type="text" class="form-control" placeholder="Destination" aria-label="Recipient's username"
+            aria-describedby="basic-addon2" id="destination2">
+
+    </div>
+
+
+    <div id="map"></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="maps.js"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCveF6CHISGohpaLZ8h-XVgLprKGb_bBBI&callback=initMap&libraries=places"
+        async defer></script>
+
+
+</body>
+
+</html>
