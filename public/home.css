@@ -5,20 +5,38 @@
 
 .button-decoration
 {
-    color: #F7CE00;
-    border-color: #F7CE00 !important;
+    color: rgb(238, 210, 54);
+    border-color:rgb(238, 210, 54); !important;
+    background-color: #000000;
     border-radius: 0px;
+}
+
+.button-decoration1
+{
+    color: rgb(238, 210, 54);
+    background-color: #000000;
+    border-radius: 0px;
+}
+.button-decoration1:hover
+{
+    color: black;
+    background-color:  rgb(238, 210, 54);
+}
+
+.navbar-toggler-icon
+{
+    color: rgb(238, 210, 54);
 }
 
 .button-decoration:hover
 {
     color: black;
-    background-color: #F7CE00;
+    background-color:  rgb(238, 210, 54);
 }
 
 .button-decoration a 
 {
-    color: #F7CE00;
+    color: rgb(238, 210, 54);
     text-decoration: none;
 }
 
@@ -26,11 +44,8 @@
 {
     color: black;
 }
-body
-{
-    background-color: #000000;
-}
-section {
+
+.login {
     background-image: url("1.jpg");
     background-color: #cccccc;
     background-repeat: no-repeat;
@@ -46,7 +61,7 @@ section {
 
    .bg-login
    {
-       background-color: rgba(247, 206, 0, 1);
+       background-color:  rgb(238, 210, 54);
        color: black;
    }
 
@@ -64,7 +79,7 @@ section {
 
 .login-decoration:hover
 {
-    color: #F7CE00;
+    color:  rgb(238, 210, 54);
     background-color: #000000;
 }
 
@@ -77,3 +92,34 @@ section {
 {
     border-radius: 0px;
 }
+
+.image-circle
+{
+    border-radius: 50%;
+}
+
+.user-text
+{
+    color: white;
+}
+
+.menu
+{
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+}
+
+.button-decoration2
+{
+    color: #000000;
+    border-color: #000000 !important;
+    border-radius: 0px;
+}
+
+.button-decoration2:hover
+{
+  color:  rgb(238, 210, 54);
+  background-color: #000000;
+}
+

@@ -31,6 +31,10 @@ app.get('/signup', function (request, response) {
     response.render('signup',{title : "Sign Up"});
 });
 
+app.get('/userhomepage', function (request, response) {
+    response.render('userhomepage',{title : "User Homepage"});
+});
+
 
 app.listen(PORT,function(){
     console.log("application listen at Port:" , PORT);
