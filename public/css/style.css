@@ -1,0 +1,44 @@
+.button-border
+{
+    border-radius: 0px;
+    margin-top: 0px;
+}
+input
+{
+    border-radius: 0px !important;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.div-bg
+{
+    background-color: rgba(255,255,255, 0.2);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    }
+
+
+ .shadow
+    {
+        box-shadow:0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .heading-welcome
+    {
+        padding-top: 20px;
+        margin-bottom: 0px;
+    }
+
+    .btn-login
+    {
+        margin-top: 10px;
+    }
+
+    .signup-bottom
+    {
+        padding-bottom: 30px;
+    }
+
+    .top-margin
+    {
+        margin-top: 60px;
+    }
