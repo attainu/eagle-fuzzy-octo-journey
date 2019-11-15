@@ -1,171 +1,86 @@
-    
-    <!--================================= NAVIGATION START =============================================-->
-    <nav class="navbar navbar-default navbar-fixed-top menu-bg" id="top-nav">
-        <div class="container">
-            <div class="navigation-tb">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div>
-                        <a href="#"> <img src="images/logo.png" alt="logo" />
-                        </a>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right no-margin" id="menu-list">
-                        <li class="menu-fs menu-underline"><a href="/" class="pagescroll">home</a>
-                        </li>
-                        <li class="menu-fs menu-underline"><a href="/login" class="pagescroll">log in</a>
-                        </li>
-                        <li class="menu-fs menu-underline nav-item active"><a href="/signup" class="pagescroll nav-link"> sign up </a>
-                        </li>
-                        <li class="menu-fs menu-underline"><a href="#" class="pagescroll"> about us</a>
-                        </li>
-                    </ul>
+{{!-- <!--================================= NAVIGATION START =============================================-->
+<nav class="navbar navbar-default navbar-fixed-top menu-bg" id="top-nav">
+    <div class="container">
+        <div class="navigation-tb">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <a href="#"> <img src="images/logo.png" alt="logo" />
+                    </a>
                 </div>
             </div>
-        </div>
-    </nav>
-    <!--================================= NAVIGATION END =============================================-->
-
-    <!--================================= EMAIL SUBSCRIPTION START =============================================-->
-    <section class="container-fluid signup-bgimage bgimage-property section-space white-text">
-        <div class="container">
-            <div class="col-md-10 column-center no-padding div-bg top-margin heading-welcome">
-                <h2 class="center bgimage-head">Sign Up</h2>
-                <div class="col-md-8 column-center no-padding">
-                    <p class="center email-text-bottom ls">sign up in to experiance the Speed</p>
-                </div>
-                <div id="mc_embed_signup">
-                    <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding">
-                        <div class="form-top">
-                            <!--================= YOUR SIGN UP ACCOUNT URL HERE ====================-->
-                            <form class="subscribe_form" method="POST" id="mc-embedded-subscribe-form"
-                                name="mc-embedded-subscribe-form"
-                                action="signup"
-                                novalidate>
-                                <!--================= FIRST INPUT BOX HERE ====================-->
-                                <div class="clearfix">
-                                    <p style="color: #1bbc9b"><b>First name</b></p>
-                                <input class="form-control place_error shadow" id="firstname" type="text" name="firstname"
-                                    placeholder="Your First name (required)" />
-                                    
-                            </div>
-                            <!--================= LAST INPUT BOX HERE ====================-->
-                            <div class="clearfix">
-                                <p style="color: #1bbc9b"><b>Last Name</b></p>
-                            <input class="form-control place_error shadow" id="lastname" type="text" name="lastname"
-                                placeholder="Your Last name (required)" />
-                        </div>
-                        <!--================= PHONE INPUT BOX HERE ====================-->
-                        <div class="clearfix">
-                            <p style="color: #1bbc9b"><b>Phone Number</b></p>
-                        <input class="form-control place_error shadow" id="phonenumber" type="tel" name="phonenumber"
-                            placeholder="Your Phone number (required)" />
-                    </div>
-                                <!--================= EMAIL INPUT BOX HERE ====================-->
-                                <div class="clearfix">
-                                        <p style="color: #1bbc9b"><b>Email Address</b></p>
-                                    <input class="form-control place_error shadow" id="email" type="email" name="email" placeholder="Your Mail (required)">
-                                </div>
-                                <div class="clearfix">
-                                    <p style="color: #1bbc9b"><b>Password</b></p>
-                                    <input class="form-control place_error shadow" id="password" type="password" name="password" style=""
-                                        placeholder="Your Password (required)" />
-                                </div>
-                                <!--================= SIGN UP BUTTON HERE ====================-->
-                                <div class="center btn-top">
-                                    <input type="submit" id="mc-embedded-subscribe" class="btn-1 btn-ant shadow" name="submit"
-                                        value="Sign Up">
-                                </div>
-
-                                <!--================= SUCCESS AND FAILURE MESSAGE HERE =================-->
-                                <div class="center indicator-top" id="ResultMsg"><span id="SuccessMsg"
-                                        class="email-success"></span><span id="FailureMsg" class="email-failure"></span>
-                                </div>
-
-                                <div id="mce-responses">
-                                    <div class="response response-msg" id="mce-error-response"></div>
-                                    <div class="response response-msg" id="mce-success-response"></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right no-margin" id="menu-list">
+                    <li class="menu-fs menu-underline"><a href="#" class="pagescroll">home</a>
+                    </li>
+                    <li class="menu-fs menu-underline"><a href="/login" class="pagescroll">log in</a>
+                    </li>
+                    <li class="menu-fs menu-underline nav-item active"><a href="/signup" class="pagescroll nav-link">
+                            sign up </a>
+                    </li>
+                    <li class="menu-fs menu-underline"><a href="#" class="pagescroll"> about us</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
-    <!--================================= EMAIL SUBSCRIPTION END =============================================-->
-<!--================================= FOOTER START =============================================-->
-    <section class="container-fluid footer-section-space section-bg-1" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-push-6 col-sm-6 col-xs-12 common-res-bottom-1">
-                    <div class="contact-div">
-                        <h4 class="center h4-bottom">address</h4>
-                        <p class="center ls adress-line-bottom">7,Sikar House,Chandpole Bazaar </p>
-                        <p class="center footer-row-space ls">Jaipur, India </p>
-    
-                        <h4 class="center h4-bottom">Email </h4>
-                        <p class="center footer-row-space ls"> <a href="#">mohdsadik.sadik@gmail.com</a>
-                        </p>
-         
-                    </div>
-                    <div class="right form-error-top" id="messageDiv"> <span class="form-success" id="sucessMessage">
-                        </span> <span class="form-failure" id="failMessage"> </span>
+    </div>
+</nav> --}}
+<!--================================= NAVIGATION END =============================================-->
+
+<!--================================= Sign up design START =============================================-->
+<section class="container-fluid signup-bgimage bgimage-property section-space white-text">
+    <div class="container">
+        <div class="signup-form">
+            <form action="/examples/actions/confirmation.php" method="post">
+                <h2>SIGN UP</h2>
+                <p class="lead">It's free and hardly takes more than 30 seconds.</p>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" name="fullname" placeholder="Full Name"
+                            required="required">
                     </div>
                 </div>
-
-                <div class="col-md-6 col-md-pull-6 col-sm-6 col-xs-12">
-                  
-                    <h4 class="center h4-bottom">phone no</h4>
-                    <p class="center footer-row-space ls">+91 9782807283</p>
-
-                    <h4 class="center follow-heading-bottom">follow us</h4>
-                    <div class="center">
-                        <ul class="no-padding no-margin footer-icon footer-left-pad">
-                            <li>
-                                <a href="#">
-                                    <img src="images/32x32x4.png" alt="icon" />
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <img src="images/32x32x5.png" alt="icon" />
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <img src="images/32x32x6.png" alt="icon" />
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <img src="images/32x32x7.png" alt="icon" />
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <img src="images/32x32x8.png" alt="icon" />
-                                </a>
-                            </li>
-                        </ul>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                        <input type="email" class="form-control" name="email" placeholder="Email Address"
+                            required="required">
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="text" class="form-control" name="password" placeholder="Password"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-phone"></i>
 
+                        </span>
+                        <input type="number" class="form-control" name="phone" placeholder="Phone Number" value="+91-">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                </div>
+                <p class="small text-center">By clicking the Sign Up button, you agree to our <br><a href="#">Terms
+                        &amp; Conditions</a>, and <a href="#">Privacy Policy</a>.</p>
+            </form>
+            <div class="text-center">
+                <p>Already have an account?</p> <a href="/login">Login here</a>.
             </div>
-            <div class="footer-br footer-br-bottom"></div>
-            <p class="center ls">&copy; 2019, All Rights Reserved</p>
         </div>
-    </section>
-    <!--================================= FOOTER END =============================================-->
 
+    </div>
+</section>
+<!--================================= END =============================================-->

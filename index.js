@@ -3,7 +3,7 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const app = express();
-const PORT = 5051;
+const PORT = 3000;
 
 // support parsing of application/json type post data
 app.use(bodyParser.json());
@@ -20,7 +20,9 @@ app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
 
 app.get("/", function(request, response) {
-  response.render("home", { title: "Flash Rides - Flash speed commuting service." });
+  response.render("home", {
+    title: "Flash Rides - Flash speed commuting service."
+  });
 });
 
 app.get("/login", function(request, response) {

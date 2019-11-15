@@ -10,9 +10,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div style="margin-top: 10px;">
+                <div style="margin-top: 0px;">
                     <a href="#">
-                     <img src="images/logo.png" alt="logo" />
+                        <img src="images/logo.png" alt="logo" />
                     </a>
                 </div>
             </div>
@@ -393,40 +393,43 @@
             <div class="col-md-12 column-center no-padding">
                 <!--=============== COLUMN-1 ==================-->
                 <div class="col-md-4 col-sm-6 common-res-bottom-1">
-                    <div class="luxury-bgimage bgimage-property">
+                    <div class="luxury-bgimage bgimage-property" id="route-planner">
                         <div class="luxury-center">
-                            <div class="distab">
-                                <div class="left distab-cell-middle">
-                                    <img src="images/80x80x1.png" alt="icon" />
-                                </div>
-                                <div class="left distab-cell-middle luxury-left-pad">
-                                    <h4 class="left"><a href="#">luxury cars</a></h4>
-                                </div>
-                            </div>
 
-                            <div class="left luxury-line-pad">
-                                <img src="images/luxury_line.png" alt="icon" />
-                            </div>
+                            <div id="gdir" class="tab-pane fade in active">
+                                <form role="form">
+                                    <h3 class="center h2-bottom">Route Planner</h3>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-flag"
+                                                style="font-size:20px"></span></span>
+                                        <input class="controls form-control" id="start-location-input"
+                                            placeholder="Start: Address, City, Zip, Place of Interest" type="text">
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-flag-checkered"
+                                                style="font-size:20px"></span></span>
+                                        <input class="controls form-control" id="destination-location-input"
+                                            placeholder="Finish: Address, City, Zip, Place of Interest" type="text">
+                                    </div>
+                                    <br>
+                                </form>
+                                <div class="distab-cell-middle " id="go-btn"><input id="getfares" type="button"
+                                        value="GET FARES" class="btn-1"></div>
+                                <div class="col-md-12 col-xl-12" style="margin-top: 20px;">
+                                    <div class="card bg-c-green order-card">
+                                        <div class="card-block">
+                                            <h5 class="m-b-20"><b>Estimated Fares</b></h5>
+                                            <h2 class="text-right"><i class="fas fa-rupee-sign f-left"></i><span
+                                                    id="rideRate">0</span>
+                                            </h2>
 
-                            <div class="distab">
-                                <div class="left distab-cell-middle">
-                                    <img src="images/80x80x2.png" alt="icon" />
-                                </div>
-                                <div class="left distab-cell-middle luxury-left-pad">
-                                    <h4 class="left"><a href="#">fast &amp; safe</a></h4>
-                                </div>
-                            </div>
+                                            <p class="m-b-0" id="dirServInfo"></p>
+                                        </div>
 
-                            <div class="left luxury-line-pad">
-                                <img src="images/luxury_line.png" alt="icon" />
-                            </div>
-
-                            <div class="distab">
-                                <div class="left distab-cell-middle">
-                                    <img src="images/80x80x3.png" alt="icon" />
-                                </div>
-                                <div class="left distab-cell-middle luxury-left-pad">
-                                    <h4 class="left"><a href="#">best tariff</a></h4>
+                                    </div>
+                                    <div class="distab-cell-middle " id="book-btn"><input id="bookride" type="button"
+                                            value="BOOK RIDE" class="btn-1"></div>
                                 </div>
                             </div>
                         </div>

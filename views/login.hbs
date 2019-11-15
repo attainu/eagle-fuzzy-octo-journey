@@ -1,38 +1,3 @@
-<!--================================= NAVIGATION START =============================================-->
-<nav class="navbar navbar-default navbar-fixed-top menu-bg" id="top-nav">
-    <div class="container">
-        <div class="navigation-tb">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div>
-                    <a href="#"> <img src="images/logo.png" alt="logo" />
-                    </a>
-                </div>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right no-margin" id="menu-list">
-                    <li class="menu-fs menu-underline"><a href="/" class="pagescroll">home</a>
-                    </li>
-                    <li class="menu-fs menu-underline nav-item active"><a href="login" class="pagescroll nav-link">log
-                            in</a>
-                    </li>
-                    <li class="menu-fs menu-underline"><a href="signup" class="pagescroll"> sign up </a>
-                    </li>
-                    <li class="menu-fs menu-underline"><a href="#contact" class="pagescroll"> about us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-<!--================================= NAVIGATION END =============================================-->
-
 <!--================================= LOGIN FORM START =============================================-->
 <section class=" container-fluid subscription-bgimage bgimage-property section-space white-text">
     <div class="container">
@@ -45,28 +10,30 @@
                 <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding">
                     <div class="form-top">
                         <!--================= YOUR MAILCHIMP ACCOUNT URL HERE ====================-->
-                        <form class="loginform" method="POST" id="login-form" name="login-form" action="login">
+                        <form class="loginform" method="POST" id="login-form" action="#">
                             <!--================= EMAIL INPUT BOX HERE ====================-->
                             <div class="clearfix">
-                                <p style="color: #1bbc9b"><b>Email Address</b></p>
+                                <label class="label-style" for="email"><b>Email Address</b></label>
                                 <input class="form-control place_error shadow" id="login-EMAIL" type="email"
-                                    name="EMAIL" placeholder="Your Mail (required)" required />
+                                    name="email" placeholder="Your Mail" required />
                             </div>
                             <div class="clearfix">
-                                <p style="color: #1bbc9b"><b>Password</b></p>
+                                <label class="label-style" for="email"><b>Password</b></label>
                                 <input class="form-control place_error shadow" id="login-PASSWORD" type="password"
-                                    name="password" style="" placeholder="Your Password (required)" required />
+                                    name="password" style="" placeholder="Your Password" required />
                             </div>
                             <!--================= SIGN IN BUTTON HERE ====================-->
                             <div class="center btn-login">
                                 <input type="submit" id="mc-embedded-subscribe" class="btn-1 btn-ant shadow"
-                                    name="submit" value="LOG IN">
+                                    name="submit" value="SIGN IN">
                             </div>
                             <p class="center email-text-bottom ls">or log in with </p>
                             <div class="center">
-                                <button class="btn btn-1 button-border shadow" style="margin-right: 10px;"><i
+                                <button class="btn btn-1 button-border shadow"
+                                    style="margin-right: 10px; border-radius: 50%; height: 50px"><i
                                         class="fab fa-google" aria-hidden="true"></i></button>
-                                <button class="btn btn-1 button-border shadow"><i
+                                <button class="btn btn-1 button-border shadow"
+                                    style="border-radius: 50%; height: 50px"><i
                                         class="fab fa-facebook-square"></i></button>
                             </div>
                             <!--================= SUCCESS AND FAILURE MESSAGE HERE =================-->
@@ -88,71 +55,3 @@
     </div>
 </section>
 <!--================================= LOGIN FORM END =============================================-->
-
-<!--================================= FOOTER START =============================================-->
-<section class="container-fluid footer-section-space section-bg-1" id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-push-6 col-sm-6 col-xs-12 common-res-bottom-1">
-                <div class="contact-div">
-                    <h4 class="center h4-bottom">address</h4>
-                    <p class="center ls adress-line-bottom">7,Sikar House,Chandpole Bazaar </p>
-                    <p class="center footer-row-space ls">Jaipur, India </p>
-
-                    <h4 class="center h4-bottom">Email </h4>
-                    <p class="center footer-row-space ls"> <a href="#">mohdsadik.sadik@gmail.com</a>
-                    </p>
-
-                </div>
-                <div class="right form-error-top" id="messageDiv"> <span class="form-success" id="sucessMessage">
-                    </span> <span class="form-failure" id="failMessage"> </span>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-md-pull-6 col-sm-6 col-xs-12">
-
-                <h4 class="center h4-bottom">phone no</h4>
-                <p class="center footer-row-space ls">+91 9782807283</p>
-
-                <h4 class="center follow-heading-bottom">follow us</h4>
-                <div class="center">
-                    <ul class="no-padding no-margin footer-icon footer-left-pad">
-                        <li>
-                            <a href="#">
-                                <img src="images/32x32x4.png" alt="icon" />
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <img src="images/32x32x5.png" alt="icon" />
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <img src="images/32x32x6.png" alt="icon" />
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <img src="images/32x32x7.png" alt="icon" />
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <img src="images/32x32x8.png" alt="icon" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-        <div class="footer-br footer-br-bottom"></div>
-        <p class="center ls">&copy; 2019, All Rights Reserved</p>
-    </div>
-</section>
-<!--================================= FOOTER END =============================================-->

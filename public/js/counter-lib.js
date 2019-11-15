@@ -493,7 +493,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             resizeThrottle: 100,
             scrollThrottle: 30
         };
-        return i.load(function() {
+        return i.on('load',function() {
             return n[m]("refresh")
         })
     })
