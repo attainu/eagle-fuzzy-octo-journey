@@ -1,68 +1,57 @@
-<header>
-    <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <div class="container">
-              <a class="navbar-brand" href="/">
-                <img src="logo.png" width="80" height="40" class="d-inline-block align-top" alt="">
-            </a>
-        </div>
-    </nav>
-</header>
-
-<!-- Begin page contentalign-items-center justify-content-center  -->
-<main>
-    <!-- Section -->
-    <section class="align-items-center login">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-
-                <div class="col-md-5 bg-light mt-2 mb-2">
-                    <h2 class="text-center">Welcome Back</h2>
-                    <hr>
-                    <form class="form-validate" action="/userhomepage">
-                        <div class="form-group">
-                            <label for="loginUsername" class="form-label"> Email Address</label>
-                            <input name="loginUsername" id="loginUsername" type="email" placeholder="name@address.com"
-                                required="" class="form-control form-control-md">
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="loginPassword" class="form-label"> Password</label>
-                                </div>
-                                <div class="col-auto"><a href="#" class="form-text small color">Forgot password?</a>
-                                </div>
-                            </div>
-                            <input name="loginPassword" id="loginPassword" placeholder="Password" type="password"
-                                required="" class="form-control form-control-md">
-                        </div>
-                        <!-- Submit-->
-                        <button class="btn btn-md btn-block btn-outline-warning login-decoration">Sign in</button>
-                    </form>    
-               <p class="text-center color">OR</p>
-
-                        <a href="/auth/facebook"><button class="btn btn-md btn-block btn-outline-primary mb-3 social-button">Connect <span
-                                class="d-none d-sm-inline">with Facebook</span></button></a>
-                        <button class="btn btn-md btn-block btn-outline-danger mb-1 social-button">Connect <span
-                                class="d-none d-sm-inline">with Google</span></button>
-                        <p class="text-center"><small class="text-muted text-center">Don't have an account yet? <a
-                                    class="color" href="/signup">Sign Up </a></small></p>
-                </div>
-
-            </div>
-        </div>
-        </div>
-        </div>
-    </section>
-</main>
-<footer class="footer mt-auto py-3 bg-dark">
+<!--================================= LOGIN FORM START =============================================-->
+<section class=" container-fluid subscription-bgimage bgimage-property section-space white-text">
     <div class="container">
-        <div class="row">
-            <div class="col-md-9 align-items-left">
-                <img src="logo.png" width="80" height="40" class="" alt="">
+        <div class="col-md-10 column-center no-padding div-bg top-margin">
+            <h2 class="center bgimage-head bgimage-head-bottom heading-welcome">Welcome Back</h2>
+            <div class="col-md-8 column-center no-padding">
+                <p class="center email-text-bottom ls">Login in to experiance the Speed</p>
             </div>
-            <div class="footer-copyright text-center py-3">© 2019 FLASH Technologies Inc.
+            <div id="mc_embed_signup">
+                <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding">
+                    <div class="form-top">
+                        <!--================= YOUR MAILCHIMP ACCOUNT URL HERE ====================-->
+                        <form class="loginform" method="POST" id="login-form" action="#">
+                            <!--================= EMAIL INPUT BOX HERE ====================-->
+                            <div class="clearfix">
+                                <label class="label-style" for="email"><b>Email Address</b></label>
+                                <input class="form-control place_error shadow" id="login-EMAIL" type="email"
+                                    name="email" placeholder="Your Mail" required />
+                            </div>
+                            <div class="clearfix">
+                                <label class="label-style" for="email"><b>Password</b></label>
+                                <input class="form-control place_error shadow" id="login-PASSWORD" type="password"
+                                    name="password" style="" placeholder="Your Password" required />
+                            </div>
+                            <!--================= SIGN IN BUTTON HERE ====================-->
+                            <div class="center btn-login">
+                                <input type="submit" id="mc-embedded-subscribe" class="btn-1 btn-ant shadow"
+                                    name="submit" value="SIGN IN">
+                            </div>
+                            <p class="center email-text-bottom ls">or log in with </p>
+                            <div class="center">
+                                <button class="btn btn-1 button-border shadow"
+                                    style="margin-right: 10px; border-radius: 50%; height: 50px"><i
+                                        class="fab fa-google" aria-hidden="true"></i></button>
+                                <button class="btn btn-1 button-border shadow"
+                                    style="border-radius: 50%; height: 50px"><i
+                                        class="fab fa-facebook-square"></i></button>
+                            </div>
+                            <!--================= SUCCESS AND FAILURE MESSAGE HERE =================-->
+                            <div class="center indicator-top" id="ResultMsg"><span id="SuccessMsg"
+                                    class="email-success"></span><span id="FailureMsg" class="email-failure"></span>
+                            </div>
 
+                            <div id="mce-responses">
+                                <div class="response response-msg" id="mce-error-response"></div>
+                                <div class="response response-msg" id="mce-success-response"></div>
+                            </div>
+                        </form>
+                        <p class="center signup-bottom ls">Don't have an account? <a style="color: #1bbc9b;"
+                                href="/signup">Sign up</a></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</footer>
+</section>
+<!--================================= LOGIN FORM END =============================================-->

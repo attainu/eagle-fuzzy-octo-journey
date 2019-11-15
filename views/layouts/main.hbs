@@ -2,33 +2,192 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="home.css">
-    <link rel="stylesheet" id="buttons-css"
-        href="https://themes.getbootstrap.com/wp-includes/css/buttons.min.css?ver=4.8.4" type="text/css" media="all">
-    <link rel="stylesheet" type="text/css" href="all.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-        integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{{title}}</title>
+    <!-- FAVICON LINK -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+
+    <!-- FONT AWESOME LINK -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <!-- CAROUSEL STYLE LINK  -->
+    <link rel="stylesheet" type="text/css" href="css/clouser.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css"
+        integrity="sha256-ke5yDzwl7GsgnYgBnCDiWSNA/x/hyU89VDHl/R535dw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"
+        integrity="sha256-Tcd+6Q3CIltXsx0o/gYhPNbEkb3HJJpucOvQA7csVwI=" crossorigin="anonymous" />
+    <!-- STYLE SWITCHER LINK -->
+    <link rel="stylesheet" type="text/css" href="css/styleswitcher.css">
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style_green.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
 </head>
 
 <body>
     {{{body}}}
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+
+    <!--================================= FOOTER START =============================================-->
+    <section class="container-fluid footer-section-space section-bg-1" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-push-6 col-sm-6 col-xs-12 common-res-bottom-1">
+                    <h4 class="left contact-heading-bottom">contact</h4>
+
+                    <div class="contact-div">
+                        <form id="contact-form" method="POST">
+                            <div class="clearfix">
+                                <!--================= NAME INPUT BOX HERE ====================-->
+                                <div class="form-div form-bottom-1">
+                                    <input class="form-control form-text" id="name" type="text" name="name" value=""
+                                        placeholder="Please Enter Name" required />
+                                </div>
+
+                                <!--================= EMAIL INPUT BOX HERE ====================-->
+                                <div class="form-div form-bottom-1">
+                                    <input class="form-control form-text" id="email" type="email" name="email" value=""
+                                        placeholder="Please Enter Email" required />
+                                </div>
+
+                                <!--================= MESSAGE INPUT BOX HERE ====================-->
+                                <div class="form-div-1">
+                                    <textarea class="form-control form-text" id="message" name="message"
+                                        placeholder="Message" rows="4" required></textarea>
+                                </div>
+
+                                <div class="distab submit-reset">
+                                    <!--================= SUBMIT BUTTON HERE ====================-->
+                                    <div class="distab-cell-middle submit-right-pad">
+                                        <input type="submit" class="btn-1" id="submit" name="submit" value="SUBMIT">
+                                    </div>
+
+                                    <!--================= RESET BUTTON HERE ====================-->
+                                    <input type="reset" class="btn-1 distab-cell-middle cancel" name="clear"
+                                        value="RESET">
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="right form-error-top" id="messageDiv"> <span class="form-success" id="sucessMessage">
+                        </span> <span class="form-failure" id="failMessage"> </span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-md-pull-6 col-sm-6 col-xs-12">
+                    <h4 class="center h4-bottom">address</h4>
+                    <p class="center ls adress-line-bottom">FlashServies, 21st Street</p>
+                    <p class="center footer-row-space ls">Banglore, Karnataka, India </p>
+
+                    <h4 class="center h4-bottom">Email </h4>
+                    <p class="center footer-row-space ls"> <a href="#">contact@flashrides.com</a>
+                    </p>
+
+                    <h4 class="center h4-bottom">phone no</h4>
+                    <p class="center footer-row-space ls">+91 9849084400</p>
+
+                    <h4 class="center follow-heading-bottom">follow us</h4>
+                    <div class="center">
+                        <ul class="no-padding no-margin footer-icon footer-left-pad">
+                            <li>
+                                <a href="#">
+                                    <img src="images/32x32x4.png" alt="icon" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="images/32x32x5.png" alt="icon" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="images/32x32x6.png" alt="icon" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="images/32x32x7.png" alt="icon" />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="images/32x32x8.png" alt="icon" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer-br footer-br-bottom"></div>
+            <p class="center ls">&copy; 2019, All Rights Reserved</p>
+        </div>
+    </section>
+    <!--================================= FOOTER END =============================================-->
+
+
+    <!-- JQUERY LIBRARY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+
+    <!-- SUBSCRIBE MAILCHIMP -->
+    <script type="text/javascript" src="js/subscribe_validate.js"></script>
+
+    <!-- VALIDATION  -->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+    <!-- COUNTER JS FILES -->
+    <script type="text/javascript" src="js/counter-lib.js"></script>
+    <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+
+    <!-- SLIDER JS FILES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
+        integrity="sha256-4OK8Th0+5QJMThqlimytmqQvxjqMic4YATocjyuUh1w=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
+
+    <!-- SUBSCRIBE MAILCHIMP -->
+    <script type="text/javascript" src="js/subscribe_validate.js"></script>
+
+    <!-- VIDEO -->
+    <script type="text/javascript" src="js/video.js"></script>
+
+    <!-- STYLE SWITCHER JS -->
+    <script type="text/javascript" src="js/jquery-template.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+
+    <!-- THEME JS -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGy493c6wH8i1UTUA-03QwEOzsEpuV78&libraries=places"></script>
+    <script src="js/map.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </body>
 
 </html>

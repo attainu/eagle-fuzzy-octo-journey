@@ -1,81 +1,86 @@
-<header>
-    <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="logo.png" width="80" height="40" class="d-inline-block align-top" alt="">
-            </a>
-        </div>
-    </nav>
-</header>
-
-<!-- Begin page contentalign-items-center justify-content-center  -->
-<main>
-    <!-- Section -->
-    <section class="align-items-center signup">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-
-                <div class="col-md-6 bg-light mt-3 mb-3">
-                    <h3 class="mt-3 text-center">Sign Up to Ride</h3>
-                    <hr>
-                    <form class="form-validate" method="GET" action="/login">
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="SignupFirstname" class="form-label"> First name (required)</label>
-                                <input name="SignupFirstname" id="SignupFirstname" type="text" placeholder="First Name"
-                                    required="" class="form-control form-control-md">
-                            </div>
-                            <div class="form-group col">
-                                <label for="SignupLastname" class="form-label"> Last name (required)</label>
-                                <input name="SignupLastname" id="SignupLastname" type="text" placeholder="Last Name"
-                                    required="" class="form-control form-control-md">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="SignupEmail" class="form-label">Enter your email (required)</label>
-                            <input name="SignupEmail" id="SignupEmail" type="email" placeholder="name@address.com"
-                                required="" class="form-control form-control-md">
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="SignupPhone" class="form-label">Enter your phone number
-                                        (required)</label>
-                                </div>
-                            </div>
-                            <input name="SignupPhone" id="SignupPhone" placeholder="Phone Number" type="tel" required=""
-                                class="form-control form-control-md">
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="SignupPassword" class="form-label">Enter a password (required)</label>
-                                </div>
-                            </div>
-                            <input name="SignupPassword" id="SignupPassword" placeholder="Password" type="password"
-                                required="" class="form-control form-control-md">
-                        </div>
-                        <!-- Submit-->
-                        <button class="btn btn-md btn-block btn-outline-warning login-decoration mb-3"><b>Sign
-                                Up</b></button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer class="footer mt-auto py-3 bg-dark">
+{{!-- <!--================================= NAVIGATION START =============================================-->
+<nav class="navbar navbar-default navbar-fixed-top menu-bg" id="top-nav">
     <div class="container">
-        <div class="row">
-            <div class="col-md-9 align-items-left">
-                <img src="logo.png" width="80" height="40" class="" alt="">
+        <div class="navigation-tb">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <a href="#"> <img src="images/logo.png" alt="logo" />
+                    </a>
+                </div>
             </div>
-            <div class="footer-copyright text-center py-3">© 2019 FLASH Technologies Inc.
-
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right no-margin" id="menu-list">
+                    <li class="menu-fs menu-underline"><a href="#" class="pagescroll">home</a>
+                    </li>
+                    <li class="menu-fs menu-underline"><a href="/login" class="pagescroll">log in</a>
+                    </li>
+                    <li class="menu-fs menu-underline nav-item active"><a href="/signup" class="pagescroll nav-link">
+                            sign up </a>
+                    </li>
+                    <li class="menu-fs menu-underline"><a href="#" class="pagescroll"> about us</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</footer>
+</nav> --}}
+<!--================================= NAVIGATION END =============================================-->
+
+<!--================================= Sign up design START =============================================-->
+<section class="container-fluid signup-bgimage bgimage-property section-space white-text">
+    <div class="container">
+        <div class="signup-form">
+            <form action="/examples/actions/confirmation.php" method="post">
+                <h2>SIGN UP</h2>
+                <p class="lead">It's free and hardly takes more than 30 seconds.</p>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" name="fullname" placeholder="Full Name"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                        <input type="email" class="form-control" name="email" placeholder="Email Address"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="text" class="form-control" name="password" placeholder="Password"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+
+                        </span>
+                        <input type="number" class="form-control" name="phone" placeholder="Phone Number" value="+91-">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                </div>
+                <p class="small text-center">By clicking the Sign Up button, you agree to our <br><a href="#">Terms
+                        &amp; Conditions</a>, and <a href="#">Privacy Policy</a>.</p>
+            </form>
+            <div class="text-center">
+                <p>Already have an account?</p> <a href="/login">Login here</a>.
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--================================= END =============================================-->
