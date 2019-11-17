@@ -304,9 +304,38 @@ a.article:hover {
   color: #23384e;
 }
 
-
 /* support Modal Styles are here */
-
+.modal-dialog {
+  overflow-y: initial !important;
+  min-width: 70%;
+}
+.modal-content {
+  min-height: 95vh;
+}
+.modal-body {
+  max-height: 450px;
+  overflow-y: auto;
+}
 .modal-header {
   display: inline-block;
+}
+
+.fa-greater-than {
+  float: right;
+}
+#style-1::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+#style-1::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
 }

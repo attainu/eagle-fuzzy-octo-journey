@@ -11,16 +11,11 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../css/dashboardnav.css">
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-        crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -69,7 +64,7 @@
                     </a>
                 </li>
                 <li {{#ifCond page_name "support"}}class="active1" {{/ifCond}}>
-                    <a href="#" data-toggle="modal" data-target="#theModal">
+                    <a href="#theModal" data-toggle="modal">
                         <i class="fas fa-life-ring" id="sizeId"></i>
                         <span id="sidebar-items">Support</span>
                     </a>
@@ -82,13 +77,16 @@
                     <button class="btn btn-danger" id="dashlogout">Logout</button>
                 </li>
             </ul>
+
             <div id="theModal" class="modal fade text-center">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         {{> supportContent}}
+
                     </div>
                 </div>
             </div>
+            {{> supportResult}}
         </nav>
         {{!-- Static Sidebar end --}}
 
@@ -122,15 +120,28 @@
                 });
             });
 
+
+
         });
         function activeHandeler() {
             $('#sidebar').removeClass('active');
             $('#sidebarCollapse').show()
         }
+        function stackModal() {
 
+            $('#theModal').modal('show');
+            console.log("modal handler")
+        };
 
 
     </script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
 
 </body>
 
