@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li {{#ifCond page_name "support"}}class="active1" {{/ifCond}}>
-                    <a href="/dashboard/support">
+                    <a href="#" data-toggle="modal" data-target="#theModal">
                         <i class="fas fa-life-ring" id="sizeId"></i>
                         <span id="sidebar-items">Support</span>
                     </a>
@@ -82,6 +82,13 @@
                     <button class="btn btn-danger" id="dashlogout">Logout</button>
                 </li>
             </ul>
+            <div id="theModal" class="modal fade text-center">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        {{> supportContent}}
+                    </div>
+                </div>
+            </div>
         </nav>
         {{!-- Static Sidebar end --}}
 
@@ -124,6 +131,7 @@
 
 
     </script>
+
 </body>
 
 </html>
