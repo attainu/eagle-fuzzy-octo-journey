@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $('#list-1-value-1').on('click', function () {
         $('#model-heading').text('Final price different from estimated');
-        $('#model-pragraph').text('In Cabify we guarantee that, in most cases, the price you see before accepting the journey is what you pay when you arrive at your destination.');
+        $('#model-pragraph').text('In Flash Ride we guarantee that, in most cases, the price you see before accepting the journey is what you pay when you arrive at your destination.');
     });
     $('#list-1-value-2').on('click', function () {
         $('#model-heading').text('I have various charges');
-        $('#model-pragraph').text('When you order a Cabify we will automatically perform a transaction identified as "pre-authorization" that goes to the issuers of your payment method. This is to ensure that your payment method, either bank card or PayPal, works correctly and also has sufficient funds to meet the payment of the journey you’re about to make.');
+        $('#model-pragraph').text('When you order a Flash Ride we will automatically perform a transaction identified as "pre-authorization" that goes to the issuers of your payment method. This is to ensure that your payment method, either bank card or PayPal, works correctly and also has sufficient funds to meet the payment of the journey you’re about to make.');
     });
     $('#list-1-value-3').on('click', function () {
         $('#model-heading').text("My discount wasn't applied");
@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
     $('#list-1-value-7').on('click', function () {
         $('#model-heading').text("Others");
-        $('#model-pragraph').text("Can't find a title that relates to your problem? Look no further, this is the place to report it. Tell us what happened to you and we will review it to give you the best solution in the shortest possible time. Cabify Commitment.");
+        $('#model-pragraph').text("Can't find a title that relates to your problem? Look no further, this is the place to report it. Tell us what happened to you and we will review it to give you the best solution in the shortest possible time. Flash Ride Commitment.");
     });
 
     $('#list-2-value-1').on('click', function () {
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
     $('#list-2-value-6').on('click', function () {
         $('#model-heading').text("Other problem");
-        $('#model-pragraph').text("Can't find a title that relates to your problem? Look no further, this is the place to report it. Tell us what happened to you and we will review it to give you the best solution in the shortest possible time. Cabify Commitment.");
+        $('#model-pragraph').text("Can't find a title that relates to your problem? Look no further, this is the place to report it. Tell us what happened to you and we will review it to give you the best solution in the shortest possible time. Flash Ride Commitment.");
     });
 
     $('#list-3-value-1').on('click', function () {
@@ -81,12 +81,12 @@ $(document).ready(function () {
 
     $('#list-3-value-5').on('click', function () {
         $('#model-heading').text("Change password");
-        $('#model-pragraph').html("In Cabify it is possible to access your details (including your password) and modify them whenever you want. All you have to do is follow the steps below:<ul><li>Open the menu and press the option 'My account'.</li><li>Select 'My info’.</li><li>Click on 'Change password' and follow the steps indicated. And that's it!</li></ul>");
+        $('#model-pragraph').html("In Flash Ride it is possible to access your details (including your password) and modify them whenever you want. All you have to do is follow the steps below:<ul><li>Open the menu and press the option 'My account'.</li><li>Select 'My info’.</li><li>Click on 'Change password' and follow the steps indicated. And that's it!</li></ul>");
        });
 
     $('#list-3-value-6').on('click', function () {
         $('#model-heading').text("Changes in my account");
-        $('#model-pragraph').html("In Cabify it is possible to access your details (including your password) and modify them whenever you want. All you have to do is follow the steps below:<ul><li>Open the menu and press the option 'My account'.</li><li>Select 'My info and change whatever details you want to.</li></ul>");
+        $('#model-pragraph').html("In Flash Ride it is possible to access your details (including your password) and modify them whenever you want. All you have to do is follow the steps below:<ul><li>Open the menu and press the option 'My account'.</li><li>Select 'My info and change whatever details you want to.</li></ul>");
     });
     $('#list-3-value-7').on('click', function () {
         $('#model-heading').text("Change financial/bank details");
@@ -94,7 +94,7 @@ $(document).ready(function () {
     });
     $('#list-3-value-8').on('click', function () {
         $('#model-heading').text(" Someone accessed my account without my consent");
-        $('#model-pragraph').text("If you believe that someone may have obtained the password for your Cabify account or accessed the account somehow, please change the password immediately.");
+        $('#model-pragraph').text("If you believe that someone may have obtained the password for your Flash Ride account or accessed the account somehow, please change the password immediately.");
     });
 
     $('#list-4-value-1').on('click', function () {
@@ -110,7 +110,7 @@ $(document).ready(function () {
 
     $('#list-4-value-3').on('click', function () {
         $('#model-heading').text("I have a charge that isn't mine");
-        $('#model-pragraph').text("We recommend that you check the exact day and time of the charge and consider whether a family member or friend may have used your payment method to make a journey in Cabify; in most cases, it is only a misunderstanding with a person you share the account with, or simply forgetfulness.");
+        $('#model-pragraph').text("We recommend that you check the exact day and time of the charge and consider whether a family member or friend may have used your payment method to make a journey in Flash Ride; in most cases, it is only a misunderstanding with a person you share the account with, or simply forgetfulness.");
     });
 
 });
