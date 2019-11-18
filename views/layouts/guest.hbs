@@ -52,23 +52,23 @@
                     <h4 class="left contact-heading-bottom">contact</h4>
 
                     <div class="contact-div">
-                        <form id="contact-form" method="POST">
+                        <form id="contact-form" method="POST" action="/sendmail">
                             <div class="clearfix">
                                 <!--================= NAME INPUT BOX HERE ====================-->
                                 <div class="form-div form-bottom-1">
-                                    <input class="form-control form-text" id="name" type="text" name="name" value=""
+                                    <input class="form-control form-text" id="Subject" type="text" name="subject" value=""
                                         placeholder="Please Enter Name" required />
                                 </div>
 
                                 <!--================= EMAIL INPUT BOX HERE ====================-->
                                 <div class="form-div form-bottom-1">
-                                    <input class="form-control form-text" id="email" type="email" name="email" value=""
+                                    <input class="form-control form-text" id="from" type="email" name="from" value=""
                                         placeholder="Please Enter Email" required />
                                 </div>
 
                                 <!--================= MESSAGE INPUT BOX HERE ====================-->
                                 <div class="form-div-1">
-                                    <textarea class="form-control form-text" id="message" name="message"
+                                    <textarea class="form-control form-text" id="text" name="text"
                                         placeholder="Message" rows="4" required></textarea>
                                 </div>
 
