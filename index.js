@@ -14,7 +14,7 @@ app.use(express.static("public"));
 const hbs = exphbs.create({
   extname: ".hbs",
   helpers: {
-    ifCond: function(v1, v2, options) {
+    ifCond: function (v1, v2, options) {
       if (v1 === v2) {
         return options.fn(this);
       }

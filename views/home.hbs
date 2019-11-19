@@ -519,16 +519,13 @@
                     tariff. To receive updates please subscribe below.</p>
             </div>
             <div id="mc_embed_signup">
-                <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding">
+                <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding"  id="email-form">
                     <div class="form-top">
                         <!--================= YOUR MAILCHIMP ACCOUNT URL HERE ====================-->
-                        <form class="subscribe_form" method="POST" id="mc-embedded-subscribe-form"
-                            name="mc-embedded-subscribe-form"
-                            action="http://evethemes.us11.list-manage.com/subscribe/post?u=a795532c55a578843e04b09c0&amp;id=fa362f029a"
-                            novalidate>
+                        <form class="subscribe_form" id="subscribe-form" name="subscribe-form" novalidate>
                             <!--================= EMAIL INPUT BOX HERE ====================-->
                             <div class="clearfix">
-                                <input class="form-control place_error" id="mce-EMAIL" type="email" name="EMAIL"
+                                <input class="form-control place_error" id="email" type="email" name="email"
                                     placeholder="Your Mail (required)" />
                             </div>
 
@@ -639,24 +636,24 @@
                 <h4 class="left contact-heading-bottom">contact</h4>
 
                 <div class="contact-div">
-                    <form id="contact-form" method="POST">
+                    <form id="contact-form">
                         <div class="clearfix">
                             <!--================= NAME INPUT BOX HERE ====================-->
                             <div class="form-div form-bottom-1">
-                                <input class="form-control form-text" id="name" type="text" name="name" value=""
+                                <input class="form-control form-text" id="subject" type="text" name="subject" value=""
                                     placeholder="Please Enter Name" required />
                             </div>
 
                             <!--================= EMAIL INPUT BOX HERE ====================-->
                             <div class="form-div form-bottom-1">
-                                <input class="form-control form-text" id="email" type="email" name="email" value=""
+                                <input class="form-control form-text" id="from" type="email" name="from" value=""
                                     placeholder="Please Enter Email" required />
                             </div>
 
                             <!--================= MESSAGE INPUT BOX HERE ====================-->
                             <div class="form-div-1">
-                                <textarea class="form-control form-text" id="message" name="message"
-                                    placeholder="Message" rows="4" required></textarea>
+                                <textarea class="form-control form-text" id="text" name="text" placeholder="Message"
+                                    rows="4" required></textarea>
                             </div>
 
                             <div class="distab submit-reset">
@@ -726,8 +723,5 @@
             </div>
 
         </div>
-        <div class="footer-br footer-br-bottom"></div>
-        <p class="center ls">&copy; 2019, All Rights Reserved</p>
-    </div>
 </section>
 <!--================================= FOOTER END =============================================-->
