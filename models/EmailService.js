@@ -1,6 +1,5 @@
-var nodemailer = require('nodemailer');
-const dotenv = require("dotenv");
-dotenv.config();
+const nodemailer = require('nodemailer');
+const sendEmail = {};
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -10,12 +9,13 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-const sendMail = function (from, subject, text, cb) {
+sendEmail.sendMail = function (from, subject, text, cb) {
+    
     var mailOptions = {
         from: "flashride24x7@gmail.com",
         to: "flashride24x7@gmail.com",
-        subject: from+":"+subject,
-        html: '<h3>Name : '+subject+'</h3><p><b>Email:</b> '+from+'</p><p><b>Message:</b> '+text+'</P>'
+        subject: " Contact Query " + from + " : " + subject,
+        html: '<h3>Name : ' + subject + '</h3><p><b>Email:</b> ' + from + '</p><p><b>Message:</b> ' + text + '</P>'
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -27,4 +27,4 @@ const sendMail = function (from, subject, text, cb) {
     });
 }
 
-module.exports = sendMail;
+module.exports = sendEmail;
