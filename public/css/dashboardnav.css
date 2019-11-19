@@ -70,8 +70,9 @@ span {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #e0e0e08a;
-  color: #4c4c4c;
+  min-height: 100vh;
+  background: #000000b8;
+  color: #ffffff;
   transition: all 0.3s;
 }
 
