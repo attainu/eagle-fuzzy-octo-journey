@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+.description{
+    font-size: 13px;
+    color: rgb(111, 108, 108);
+}
+
+#name::placeholder{
+    color: rgb(131, 127, 127);
+    font-size:11px; 
+
+}
+#name{ 
+    outline: none;
+    border-radius: 14px;
+	border: 0.5px solid rgb(163, 162, 162);
+	padding: 10px 15px;
+    width: 70%;
+    
+}
+
+#number::placeholder{
+    color: rgb(131, 127, 127);
+    font-size:11px; 
+}
+#number{ 
+    outline: none;
+    border-radius: 14px;
+	border: 0.5px solid rgb(163, 162, 162);
+	padding: 10px 15px;
+    width: 70%;
+    
+
+}
+
+#email::placeholder{
+    color: rgb(131, 127, 127);
+    font-size:11px; 
+
+}
+#email{ 
+    outline: none;
+    border-radius: 14px;
+	border: 0.5px solid rgb(163, 162, 162);
+	padding: 10px 15px;
+    width: 70%;
+    
+
+}
+.button-info{
+    background-color:#00c59e; 
+    color:#fff;
+    display: block;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    margin: -15px -15px;
+    cursor: pointer;
+    float: right;
+}
+#add-location{
+    font-family: "Raleway", Helvathika, Arial, sans-serif;
+    text-decoration: none;
+    color: #00c59e;
+}
+#add-location:hover{
+    color: rgb(60, 60, 233);
+
+}
+
+.delete-location{
+    font-size: 14px;
+    font-family: "Raleway", Helvathika, Arial, sans-serif;
+    color: #00c59e;
+}
+
+.delete-location:hover{
+    color: red;
+}
+.saved{
+    margin: 0 0 -11px 18px;
+    color: #000;
+    font-size: 14px;
+}
+.update-location{
+    margin: 0 0 -11px 18px;
+}
+
+.tag{
+    color:#000;
+}
+
+select{
+    width: 70%;
+    border-radius: 14px;
+    padding: 10px 15px;
+    margin-top: -26px;
+    outline: none;
+}
+.air select{
+    width: 170%;
+    border-radius: 14px;
+    padding: 10px 15px;
+    margin-top: -7px;
+    outline: none;
+}
+.driver select{
+    width: 90%;
+    border-radius: 14px;
+    padding: 10px 15px;
+    margin-top: -5px;
+    outline: none;
+}
+
+option{
+    font-size: 14px;
+
+}
