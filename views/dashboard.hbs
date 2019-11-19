@@ -57,58 +57,38 @@
 </div> -->
 
 <div class="bg-modal">
-    <div class="col-md-10 column-center no-padding login-bg top-margin">
-
-        <h2 class="center bgimage-head bgimage-head-bottom heading-welcome">Login</h2>
-        <div class="col-md-8 column-center no-padding">
-            <p class="center email-text-bottom ls">Login in to experiance the Speed</p>
-        </div>
-        <div id="mc_embed_signup">
-            <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding">
-                <div class="form-top">
-                    <!--================= YOUR MAILCHIMP ACCOUNT URL HERE ====================-->
-                    <form class="loginform" method="POST" id="login-form" action="#">
-                        <!--================= EMAIL INPUT BOX HERE ====================-->
-                        <div class="clearfix">
-                            <label class="label-style" for="email"><b>Email Address</b></label>
-                            <input class="form-control place_error shadow" id="login-EMAIL" type="email" name="email"
-                                placeholder="Your Mail" required />
-                        </div>
-                        <div class="clearfix">
-                            <label class="label-style" for="email"><b>Password</b></label>
-                            <input class="form-control place_error shadow" id="login-PASSWORD" type="password"
-                                name="password" style="" placeholder="Your Password" required />
-                        </div>
-                        <!--================= SIGN IN BUTTON HERE ====================-->
-                        <div class="center btn-login">
-                            <input type="button" id="mc-embedded-subscribe" class="btn-1 btn-ant shadow" name="submit"
-                                value="SIGN IN">
-                        </div>
-                        <p class="center email-text-bottom ls">or log in with </p>
-                        <div class="center">
-                            <button class="btn btn-1 button-border shadow"
-                                style="margin-right: 10px; border-radius: 50%; height: 50px"><i class="fab fa-google"
-                                    aria-hidden="true"></i></button>
-                            <button class="btn btn-1 button-border shadow" style="border-radius: 50%; height: 50px"><i
-                                    class="fab fa-facebook-square"></i></button>
-                            <p class="center signup-bottom2 ls"><b>Don't have an account?</b> <a style="color: #1bbc9b;"
-                                    href="/signup">Sign up</a></p>
-                        </div>
-                        <!--================= SUCCESS AND FAILURE MESSAGE HERE =================-->
-                        <div class="center indicator-top" id="ResultMsg"><span id="SuccessMsg"
-                                class="email-success"></span><span id="FailureMsg" class="email-failure"></span>
-                        </div>
-
-                        <div id="mce-responses">
-                            <div class="response response-msg" id="mce-error-response"></div>
-                            <div class="response response-msg" id="mce-success-response"></div>
-                        </div>
-                    </form>
-
+    <div class="modal-dialog modal-login" id="login-popup">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="avatar">
+                    <img src="images/avatar.png" alt="Avatar">
                 </div>
+                <h4 class="modal-title">Member Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body" id="login-modal-body">
+                <form action="/examples/actions/confirmation.php" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username"
+                            required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password"
+                            required="required">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Sign Up</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#">Forgot Password?</a>
             </div>
         </div>
-
     </div>
 </div>
 
