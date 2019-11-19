@@ -82,6 +82,7 @@ app.get("/dashboard/support", function (request, response) {
 const sendEmail = require('./controllers/emailservice.js');
 
 app.post('/sendmail', sendEmail.contactUs);
+app.post('/subscribemail',sendEmail.subscribeEmail)
 
 app.listen(PORT, function () {
   console.log("application listen at Port:", PORT);

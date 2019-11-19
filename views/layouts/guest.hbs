@@ -42,87 +42,106 @@
 <body>
     {{{body}}}
 
-        <!--================================= FOOTER START =============================================-->
-        <section class="container-fluid section-bg-1" id="contact">
-            <div class="container">
-                <div class="footer-br footer-br-bottom"></div>
-                <p class="center">&copy; 2019, All Rights Reserved</p>
-            </div>
-        </section>
-        <!--================================= FOOTER END =============================================-->
+    <!--================================= FOOTER START =============================================-->
+    <section class="container-fluid section-bg-1" id="contact">
+        <div class="container">
+            <div class="footer-br footer-br-bottom"></div>
+            <p class="center">&copy; 2019, All Rights Reserved</p>
+        </div>
+    </section>
+    <!--================================= FOOTER END =============================================-->
 
 
-        <!-- JQUERY LIBRARY -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <!-- BOOTSTRAP -->
-        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <!-- JQUERY LIBRARY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
-        <!-- SUBSCRIBE MAILCHIMP -->
-        <script type="text/javascript" src="js/subscribe_validate.js"></script>
+    <!-- SUBSCRIBE MAILCHIMP -->
+    <script type="text/javascript" src="js/subscribe_validate.js"></script>
 
-        <!-- VALIDATION  -->
-        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <!-- VALIDATION  -->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 
-        <!-- COUNTER JS FILES -->
-        <script type="text/javascript" src="js/counter-lib.js"></script>
-        <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+    <!-- COUNTER JS FILES -->
+    <script type="text/javascript" src="js/counter-lib.js"></script>
+    <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
 
-        <!-- SLIDER JS FILES -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
-            integrity="sha256-4OK8Th0+5QJMThqlimytmqQvxjqMic4YATocjyuUh1w=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/carousel.js"></script>
+    <!-- SLIDER JS FILES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
+        integrity="sha256-4OK8Th0+5QJMThqlimytmqQvxjqMic4YATocjyuUh1w=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
 
-        <!-- SUBSCRIBE MAILCHIMP -->
-        <script type="text/javascript" src="js/subscribe_validate.js"></script>
+    <!-- SUBSCRIBE MAILCHIMP -->
+    <script type="text/javascript" src="js/subscribe_validate.js"></script>
 
-        <!-- VIDEO -->
-        <script type="text/javascript" src="js/video.js"></script>
+    <!-- VIDEO -->
+    <script type="text/javascript" src="js/video.js"></script>
 
-        <!-- STYLE SWITCHER JS -->
-        <script type="text/javascript" src="js/jquery-template.js"></script>
-        <script type="text/javascript" src="js/settings.js"></script>
+    <!-- STYLE SWITCHER JS -->
+    <script type="text/javascript" src="js/jquery-template.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
 
-        <!-- THEME JS -->
-        <script type="text/javascript" src="js/custom.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <!-- THEME JS -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGy493c6wH8i1UTUA-03QwEOzsEpuV78&libraries=places"></script>
-        <script src="js/map.js"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#contact-form').on('submit', function (e) {
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGy493c6wH8i1UTUA-03QwEOzsEpuV78&libraries=places"></script>
+    <script src="js/map.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
-                    e.preventDefault();
+            $('#contact-form').on('submit', function (e) {
 
-                    var data = {
-                        subject: $('#subject').val(),
-                        from: $('#from').val(),
-                        text: $('#text').val()
+                e.preventDefault();
 
-                    }
-                    console.log(data);
+                var data = {
+                    subject: $('#subject').val(),
+                    from: $('#from').val(),
+                    text: $('#text').val()
 
-                    $.post("/sendmail", data, function () {
+                }
+                console.log(data);
 
-                        var alertEmail = $("<div></div>").text("Form submitted Successfully").addClass('alert alert-success');
-                        $('.contact-div').append(alertEmail);
+                $.post("/sendmail", data, function () {
 
-                        $('#subject').val('');
-                        $('#from').val('');
-                        $('#text').val('');
+                    var alertEmail = $("<div></div>").text("Form submitted Successfully").addClass('alert alert-success');
+                    $('.contact-div').append(alertEmail);
 
-                    });
+                    $('#subject').val('');
+                    $('#from').val('');
+                    $('#text').val('');
 
-                    setTimeout(function () {
-                        $('.alert-success').hide();
-                    }, 10000);
                 });
+
+                setTimeout(function () {
+                    $('.alert-success').hide();
+                }, 10000);
             });
-        </script>
+
+            $('#subscribe-form').on('submit', function (e) {
+
+                e.preventDefault();
+                var data = { email: $('#email').val() };
+
+                $.post("/subscribemail", data, function () {
+
+                    var alertEmail = $("<div></div>").text("Successfully subscribe").addClass('alert alert-success');
+                    $('#email-form').append(alertEmail);
+
+                    $('#email').val('');
+                });
+
+                setTimeout(function () {
+                    $('.alert-success').hide();
+                }, 10000);
+            });
+        });
+    </script>
 
 </body>
 
