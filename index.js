@@ -1,14 +1,15 @@
 const express = require("express");
-const exphbs = require("express-handlebars");
-const bodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
 const app = express();
+const exphbs = require("express-handlebars");
 const PORT = 3000;
+const router = require('./router.js');
+
+app.use('/', router);
 
 // support parsing of application/json type post data
-app.use(bodyParser.json());
+app.use(express.json());
 //support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
@@ -27,57 +28,8 @@ const hbs = exphbs.create({
 app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
 
-app.get("/", function(request, response) {
-  response.render("home", {
-    title: "Flash Rides - Flash speed commuting service.",
-    layout: "guest.hbs"
-  });
-});
 
-app.get("/login", function(request, response) {
-  response.render("login", { title: "Login", layout: "guest.hbs" });
-});
+    app.listen(PORT, function(req, res){
+        console.log("Application is running on PORT: ",PORT);
+    })
 
-app.get("/signup", function(request, response) {
-  response.render("signup", { title: "Sign Up", layout: "guest.hbs" });
-});
-
-app.get("/dashboard", function(request, response) {
-  response.render("dashboard", {
-    title: "User Dashboard",
-    page_name: "dashboard",
-    layout: "user.hbs"
-  });
-});
-app.get("/dashboard/rides", function(request, response) {
-  response.render("rides", {
-    title: "User Rides",
-    layout: "user.hbs",
-    page_name: "rides"
-  });
-});
-app.get("/dashboard/billing", function(request, response) {
-  response.render("billing", {
-    title: "User Billing",
-    layout: "user.hbs",
-    page_name: "billing"
-  });
-});
-app.get("/dashboard/profile", function(request, response) {
-  response.render("profile", {
-    title: "User Support",
-    layout: "user.hbs",
-    page_name: "profile"
-  });
-});
-app.get("/dashboard/support", function(request, response) {
-  response.render("support", {
-    title: "User Support",
-    layout: "user.hbs",
-    page_name: "support"
-  });
-});
-
-app.listen(PORT, function() {
-  console.log("application listen at Port:", PORT);
-});
