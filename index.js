@@ -78,11 +78,14 @@ app.get("/dashboard/support", function (request, response) {
   });
 });
 
-//to send email
-const sendEmail = require('./controllers/emailservice.js');
+//to send email services
+const sendEmail = require('./controllers/emailservices.js');
 
-app.post('/sendmail', sendEmail.contactUs);
-app.post('/subscribemail',sendEmail.subscribeEmail)
+app.post('/sendmail', sendEmail.contactUsEmail);
+app.post('/subscribemail',sendEmail.subscribeEmail);
+app.post('/supportemail',sendEmail.supportEmail);
+
+//end email service
 
 app.listen(PORT, function () {
   console.log("application listen at Port:", PORT);

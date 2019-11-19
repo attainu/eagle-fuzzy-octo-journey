@@ -65,24 +65,24 @@ $(document).ready(function () {
 
     $('#list-3-value-2').on('click', function () {
         $('#model-heading').text("I've forgotten my password");
-        $('#model-pragraph').html("Don't worry, it happens to the best of us! And more than once. But everything has a solution:<br>"+
-       "Click on 'I forgot my password' on the home screen...and follow the instructions we give you. It's as simple as that!");
-        });
+        $('#model-pragraph').html("Don't worry, it happens to the best of us! And more than once. But everything has a solution:<br>" +
+            "Click on 'I forgot my password' on the home screen...and follow the instructions we give you. It's as simple as that!");
+    });
 
     $('#list-3-value-3').on('click', function () {
         $('#model-heading').text("I can't order a vehicle");
         $('#model-pragraph').html("If you can't order a vehicle it could be for several reasons:<br><ul><li>That you have a pending payment.</li><li>Your payment method has been rejected.</li><li>That there are no vehicles or that we do not operate in the area where you want to order the journey.</li></ul>To solve problems with payment methods, just enter a valid one");
-       });
+    });
 
     $('#list-3-value-4').on('click', function () {
         $('#model-heading').text("I want to delete my account");
         $('#model-pragraph').text("We're so sorry to say goodbye! But of course we respect your decision and that's why you can unsubscribe whenever you want. We will delete all your personal data, deactivate your account and send you a confirmation email.");
-       });
+    });
 
     $('#list-3-value-5').on('click', function () {
         $('#model-heading').text("Change password");
         $('#model-pragraph').html("In Flash Ride it is possible to access your details (including your password) and modify them whenever you want. All you have to do is follow the steps below:<ul><li>Open the menu and press the option 'My account'.</li><li>Select 'My info’.</li><li>Click on 'Change password' and follow the steps indicated. And that's it!</li></ul>");
-       });
+    });
 
     $('#list-3-value-6').on('click', function () {
         $('#model-heading').text("Changes in my account");
@@ -99,8 +99,8 @@ $(document).ready(function () {
 
     $('#list-4-value-1').on('click', function () {
         $('#model-heading').text("I can't add a payment method");
-        $('#model-pragraph').text("If you are a corporate user you cannot add personal payment methods because your account has been set up by your company, which is responsible for paying for your journey."+
-        "If you want to add a payment method, you will have to do it through a personal account and not through your corporate account.");
+        $('#model-pragraph').text("If you are a corporate user you cannot add personal payment methods because your account has been set up by your company, which is responsible for paying for your journey." +
+            "If you want to add a payment method, you will have to do it through a personal account and not through your corporate account.");
     });
 
     $('#list-4-value-2').on('click', function () {
@@ -112,5 +112,24 @@ $(document).ready(function () {
         $('#model-heading').text("I have a charge that isn't mine");
         $('#model-pragraph').text("We recommend that you check the exact day and time of the charge and consider whether a family member or friend may have used your payment method to make a journey in Flash Ride; in most cases, it is only a misunderstanding with a person you share the account with, or simply forgetfulness.");
     });
+
+    var title; //gloable
+    $('a').on('click', function () {
+        title = $('#model-heading').text();
+    });
+
+    $('#submit').on('click', function () {
+        var rideDetail = $("#inputState :selected").text();
+        var message = $('textarea').val();
+        var data = {
+            subject: title,
+            text1: rideDetail,
+            text2: message
+        }
+
+        $.post("/supportemail", data, function () {
+            alert('request register successfully');
+        });
+    })
 
 });
