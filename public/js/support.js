@@ -118,7 +118,8 @@ $(document).ready(function () {
         title = $('#model-heading').text();
     });
 
-    $('#submit').on('click', function () {
+    $('#support-form').on('submit', function (e) {
+        e.preventDefault();
         var rideDetail = $("#inputState :selected").text();
         var message = $('textarea').val();
         var data = {
@@ -126,9 +127,9 @@ $(document).ready(function () {
             text1: rideDetail,
             text2: message
         }
-
         $.post("/supportemail", data, function () {
             alert('request register successfully');
+            $('#close').click();
         });
     })
 
