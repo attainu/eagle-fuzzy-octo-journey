@@ -2,9 +2,7 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const PORT = 3000;
-const router = require('./router.js');
-
-app.use('/', router);
+const router = require("./router.js");
 
 // support parsing of application/json type post data
 app.use(express.json());
@@ -27,9 +25,8 @@ const hbs = exphbs.create({
 
 app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
+app.use("/", router);
 
-
-    app.listen(PORT, function(req, res){
-        console.log("Application is running on PORT: ",PORT);
-    })
-
+app.listen(PORT, function(req, res) {
+  console.log("Application is running on PORT: ", PORT);
+});
