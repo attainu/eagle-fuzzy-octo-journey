@@ -19,13 +19,15 @@ $('document').ready(function(){
                 method:"POST",
                 data:{email:email, password:password},
                 success:function(response){
+
                         $('span').text("");
                         if(response.status==401){
                         $('<span/>').text(response.message).css("color","red").appendTo($('#login-form'));
                         }
+                        
                         else{
-                            calculateAndDisplayRoute(directionsService, directionsRenderer , null);
-                            $('.bg-modal').hide();
+                            
+                            console.log(response.message);
 
                         }
                     //$('#SuccessMsg').html(msg);

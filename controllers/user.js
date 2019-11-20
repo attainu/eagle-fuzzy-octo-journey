@@ -16,6 +16,7 @@ UserController.register = function(req, res){
                                                             error:error
                                                           })
                                                 }
+                                        
                                         return res
                                         .status(200)
                                         .send({
@@ -54,7 +55,7 @@ UserController.login = function(req, res){
         if(error){
             return res
         .send({
-                status:500,
+                status:404,
                  message: error,
               });
         }

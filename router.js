@@ -15,13 +15,6 @@ router.get("/", function(request, response) {
     });
   });
   
-  router.get("/login", function(request, response) {
-    response.render("login", { title: "Login", layout: "guest.hbs" });
-  });
-  
-  router.get("/signup", function(request, response) {
-    response.render("signup", { title: "Sign Up", layout: "guest.hbs" });
-  });
   
   router.get("/dashboard", function(request, response) {
     response.render("dashboard", {

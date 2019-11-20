@@ -30,7 +30,7 @@ const hbs = exphbs.create({
 
 app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
-app.use("/", router);
+
 
 app.use(session({
   name:'CabBookingApp-User-Session',
