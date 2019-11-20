@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+
+//driver api controller import
+const drivers = require("./controllers/driver.js");
+
 //importing usercontroller to use it with express routers
 //const userController = require("./controllers/userController");
 
@@ -58,4 +62,8 @@ router.get("/", function(request, response) {
 /*router.post("/register", userController.register);
 router.post("/login", userController.login);
 router.post("/logout", userController.logout);*/
+
+//driver api controller route
+router.get('/dashboard/drivers',drivers.getDriver);
+
 module.exports = router;
