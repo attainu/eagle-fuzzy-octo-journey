@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-//importing usercontroller to use it with express routers
-//const userController = require("./controllers/userController");
+
+//importing controllers to use it with express routers
+
+const controllers = require('./controllers/index.js');
+
+
 
 
 router.get("/", function(request, response) {
@@ -55,7 +59,13 @@ router.get("/", function(request, response) {
     });
   });
 
-/*router.post("/register", userController.register);
-router.post("/login", userController.login);
-router.post("/logout", userController.logout);*/
+//router.post('/signup', controllers.UserController.register);
+
+router.post('/login', controllers.UserController.login);
+
+
+//router.post("/logout", userController.logout);
+
+
+
 module.exports = router;
