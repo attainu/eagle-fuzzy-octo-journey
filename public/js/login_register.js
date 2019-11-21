@@ -25,7 +25,7 @@ $('document').ready(function(){
                         $('<span/>').text(response.message).css("color","red").appendTo($('#login-form'));
                         }
                         
-                        else{
+                        {
                             
                             console.log(response.message);
 
@@ -42,18 +42,53 @@ $('document').ready(function(){
 
         })
     }
-
-})
-
-/*$.getScript( "js/mainMap.js" )
-  .done(function( script, textStatus ) {
-    console.log( textStatus );
-  })
-  .fail(function( jqxhr, settings, exception ) {
-    console.log("Attempt failed");
-});*/
-
 })
 
 
+    $('#signup-form').on('submit',function(event){
 
+        event.preventDefault();
+
+        var form = $(this);
+
+        $('span').text("");
+
+        var name = $('#signup-name').val().trim();
+
+        var email = $('#signup-email').val().trim();
+
+        var password = $('#signup-password').val().trim();
+
+        var phonenumber = $('#signup-phonenumber').val().trim();
+
+        console.log(name,email,password, phonenumber);
+
+        
+            $.ajax({
+                
+                url:"/signup",
+                method:"POST",
+                data:{name:name,email:email, password:password, phonenumber:phonenumber},
+                success:function(response){
+
+                    if(response.status==200){
+
+
+
+                    }
+
+                    else{
+                            
+                            $('<span/>').text(response.data.message).css("color","red").appendTo($('#signup-form'));
+                    }
+                }
+                    //$('#SuccessMsg').html(msg);
+                    
+                    
+
+        })
+    
+
+})
+
+})

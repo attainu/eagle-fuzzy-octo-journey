@@ -3,20 +3,25 @@ const md5 = require('md5');
 const UserController = {};
 
 UserController.register = function(req, res){
-    var data = req.body;
-    User.create({name:data.name,email:data.email,phonenumber:data.phonenumber,password:data.password
+    
+    var name = req.body.name;
+    var email = req.body.email;
+    var password = req.body.password;
+    var phonenumber = req.body.phonenumber;
+    
+    User.create({name:name,email:email,phonenumber:phonenumber,password:password
                 /*avatar:`https://gravatar.com/avatar/${md5(data.email)}?s=128`*/
                 }, function(error,response){
                                         if(error){
                                                     return res
-                                                    .status(500)
                                                     .send({
                                                             status:false,
                                                             message:"Failed to create a user",
-                                                            error:error
+                                                            data:error
                                                           })
                                                 }
-                                        
+                                        req.session.user = response;
+                                        console.log(req.session.user);
                                         return res
                                         .status(200)
                                         .send({
@@ -93,6 +98,12 @@ UserController.login = function(req, res){
         })
         
     }
+
+UserController.logout = function(req,res){
+
+    session.destroy();
+    return res.send({status:true, message:"logged out"});
+}
 
     
 

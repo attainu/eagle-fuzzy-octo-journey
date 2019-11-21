@@ -52,12 +52,11 @@ router.get("/", function(request, response) {
     });
   });
 
-//router.post('/signup', controllers.UserController.register);
+router.post('/signup', controllers.UserController.register);
 
 router.post('/login', controllers.UserController.login);
 
-
-//router.post("/logout", userController.logout);
+router.post("/logout", controllers.UserController.logout);
 
 
 
