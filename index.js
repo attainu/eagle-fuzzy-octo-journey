@@ -51,6 +51,19 @@ app.use(session({
 
 app.use('/', router);
 
+
+app.get("/sessionTest" , function(req,res){
+  if(req.session.user){
+    return res.send({
+      status : true ,
+      data : req.session.user
+    })
+  }
+  return res.send({
+    status:false
+  })
+})
+
 db.connect()
 .then( function(){
     app.listen(PORT, function(req, res){

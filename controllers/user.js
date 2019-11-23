@@ -90,6 +90,7 @@ UserController.login = function(req, res){
                 .send({
                         status:401,
                         message:'Incorrect Password, Try again',
+                        data : response
                      });
             }
 
@@ -101,7 +102,7 @@ UserController.login = function(req, res){
 
 UserController.logout = function(req,res){
 
-    session.destroy();
+    req.session.destroy();
     return res.send({status:true, message:"logged out"});
 }
 

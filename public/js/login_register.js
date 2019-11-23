@@ -1,6 +1,6 @@
 $('document').ready(function(){
 
-    $('#login-form').on('submit',function(event){
+  /*  $('#login-form').on('submit',function(event){
 
         event.preventDefault();
 
@@ -42,10 +42,10 @@ $('document').ready(function(){
 
         })
     }
-})
+}) */
 
 
-    $('#signup-form').on('submit',function(event){
+   /* $('#signup-form').on('submit',function(event){
 
         event.preventDefault();
 
@@ -89,6 +89,6 @@ $('document').ready(function(){
         })
     
 
-})
+}) */
 
 })

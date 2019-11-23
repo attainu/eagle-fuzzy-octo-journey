@@ -1,9 +1,22 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $(".column-center").hide();
 
   $(".bg-modal-arrived").hide();
   $(".bg-modal-reached").hide();
   $(".booking-card").hide();
+
+  var car = "M17.402,0H5.643C2.526,0,0,3.467,0,6.584v34.804c0,3.116,2.526,5.644,5.643,5.644h11.759c3.116,0,5.644-2.527,5.644-5.644 V6.584C23.044,3.467,20.518,0,17.402,0z M22.057,14.188v11.665l-2.729,0.351v-4.806L22.057,14.188z M20.625,10.773 c-1.016,3.9-2.219,8.51-2.219,8.51H4.638l-2.222-8.51C2.417,10.773,11.3,7.755,20.625,10.773z M3.748,21.713v4.492l-2.73-0.349 V14.502L3.748,21.713z M1.018,37.938V27.579l2.73,0.343v8.196L1.018,37.938z M2.575,40.882l2.218-3.336h13.771l2.219,3.336H2.575z M19.328,35.805v-7.872l2.729-0.355v10.048L19.328,35.805z";
+  var icon = {
+    path: car,
+    scale: .7,
+    strokeColor: 'white',
+    strokeWeight: .10,
+    fillOpacity: 1,
+    fillColor: '#404040',
+    offset: '5%',
+    // rotation: parseInt(heading[i]),
+    anchor: new google.maps.Point(10, 25) // orig 10,50 back of car, 10,0 front of car, 10,25 center of car
+  };
 
   var map;
   var service;
@@ -89,7 +102,7 @@ $(document).ready(function() {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        function(position) {
+        function (position) {
           var pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
@@ -112,7 +125,7 @@ $(document).ready(function() {
 
           //reverse geocoding
           geocoder = new google.maps.Geocoder();
-          geocoder.geocode({ location: origin }, function(results, status) {
+          geocoder.geocode({ location: origin }, function (results, status) {
             console.log("My result--> ", results[0].geometry.location.lat());
             if (status === "OK") {
               if (results[0]) {
@@ -126,7 +139,7 @@ $(document).ready(function() {
             }
           });
         },
-        function() {
+        function () {
           handleLocationError(true, infoWindow, map.getCenter());
         }
       );
@@ -157,7 +170,7 @@ $(document).ready(function() {
 
     //Handling When place is changed in input box by he user
 
-    var onChangeHandler = function() {
+    var onChangeHandler = function () {
       calculateAndDisplayRoute(directionsService, directionsRenderer, null);
     };
     document
@@ -166,7 +179,7 @@ $(document).ready(function() {
 
     //Finding nearest cab to the source location
 
-    var findNearestMarker = function() {
+    var findNearestMarker = function () {
       var nearestMarker = markers[0];
       console.log(markers);
       minDistance = findDistance(origin, markers[0]);
@@ -189,7 +202,7 @@ $(document).ready(function() {
 
       // Remove the collected markers
 
-      setTimeout(function() {
+      setTimeout(function () {
         removeMarkers(extraMarkers);
         calculateAndDisplayRouteFromCab(
           directionsService,
@@ -217,7 +230,7 @@ $(document).ready(function() {
          $(".click-temp").hide(); */
       $("#sidebar").removeClass("active");
       $("#sidebarCollapse").show();
-      setTimeout(function() {
+      setTimeout(function () {
         $("#login-modal").modal("hide");
       }, 1000);
       $("#cabbyName").text("Name: " + cabby.name);
@@ -226,14 +239,14 @@ $(document).ready(function() {
         .removeClass("booking-card")
         .addClass("booking-card-start")
         .fadeIn(1500);
-      setTimeout(function() {
+      setTimeout(function () {
         $(".booking-card-start")
           .removeClass("booking-card-start")
           .addClass("booking-card")
           .fadeIn(1000);
       }, 3000);
 
-      var onClickHandler = function() {
+      var onClickHandler = function () {
         $(".bg-modal-arrived").fadeOut(700);
         $(".btn-2").attr("disabled", true);
         calculateAndDisplayRoute(
@@ -244,17 +257,17 @@ $(document).ready(function() {
       };
 
       //On Clicks
-      $(".btn-cancel").on("click", function() {
+      $(".btn-cancel").on("click", function () {
         location.reload();
       });
       $(".btn-ride").on("click", onClickHandler);
-      $(".btn-reached").on("click", function() {
+      $(".btn-reached").on("click", function () {
         location.reload();
       });
     };
 
     //document.getElementById("searchCabs").addEventListener("click", findNearestMarker);
-    document.getElementById("searchCabs").addEventListener("click", function() {
+    document.getElementById("searchCabs").addEventListener("click", function () {
       if (document.getElementById("destination2").value == "") {
         return alert("Enter Destination");
       }
@@ -263,7 +276,7 @@ $(document).ready(function() {
       destination = document.getElementById("destination2").value;
 
       //   $(".bg-modal").fadeIn(1000);
-      setTimeout(function() {
+      setTimeout(function () {
         $("#login-modal").modal("show");
       }, 1000);
       // $(".column-center").show();
@@ -275,12 +288,125 @@ $(document).ready(function() {
       });
       $(".click-temp").hide();
     });
-    $("#login-form").on("submit", function(event) {
-      console.log("event triggered");
+
+    //On Login popup click
+    $("#login-form").on("submit", function (event) {
       event.preventDefault();
-      findNearestMarker();
+
+      var form = $(this);
+
+      var email = $('#login-email').val().trim();
+
+      var password = $('#login-password').val().trim();
+
+      console.log(email, password);
+
+      if (email !== "" && password !== "") {
+        $.ajax({
+
+          url: "/login",
+          method: "POST",
+          data: { email: email, password: password },
+          success: function (response) {
+            $('span').text("");
+            if (response.status == 401) {
+              $('<span/>').text(response.message).css("color", "red").appendTo($('#login-form'));
+            }
+            else {
+              console.log(response.session);
+              $("#dashlogout").show();
+              findNearestMarker();
+
+
+            }
+            //$('#SuccessMsg').html(msg);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+
+        })
+      }
     });
-    $(".btn-2").on("click", function() {
+
+    //On Register click
+
+    $('#signup-form').on('submit', function (event) {
+
+      event.preventDefault();
+
+      var form = $(this);
+
+      $('span').text("");
+
+      var name = $('#signup-name').val().trim();
+
+      var email = $('#signup-email').val().trim();
+
+      var password = $('#signup-password').val().trim();
+
+      var phonenumber = $('#signup-phonenumber').val().trim();
+
+      console.log(name, email, password, phonenumber);
+
+
+      $.ajax({
+
+        url: "/signup",
+        method: "POST",
+        data: { name: name, email: email, password: password, phonenumber: phonenumber },
+        success: function (response) {
+
+          if (response.status) {
+            console.log(response.session);
+            $("#dashlogout").show();
+            $(".modal-backdrop").hide()
+            $("#signup-content").hide()
+            $("#signup-modal").hide()
+            findNearestMarker();
+
+
+
+
+          }
+
+          else {
+
+            $('<span/>').text(response.data.message).css("color", "red").appendTo($('#signup-form'));
+          }
+        }
+        //$('#SuccessMsg').html(msg);
+
+
+
+      })
+
+
+    })
+
+    //On logout
+    $("#dashlogout").on("click", function () {
+
+      $.ajax({
+
+        url: "/logout",
+        method: "POST",
+        success: function (response) {
+
+          if (response.status) {
+            window.location = "/";
+          }
+
+
+        }
+        //$('#SuccessMsg').html(msg);
+
+
+
+      })
+
+    })
+    $(".btn-2").on("click", function () {
       location.reload();
     });
   }
@@ -300,7 +426,7 @@ $(document).ready(function() {
         //destination: {query : destination},
         travelMode: "DRIVING"
       },
-      function(response, status) {
+      function (response, status) {
         if (status === "OK") {
           directionsRenderer.setDirections(response);
 
@@ -329,7 +455,7 @@ $(document).ready(function() {
         destination: { location: marker },
         travelMode: "DRIVING"
       },
-      function(response, status) {
+      function (response, status) {
         if (status === "OK") {
           directionsRenderer.setDirections(response);
           console.log(
@@ -346,9 +472,9 @@ $(document).ready(function() {
     );
   }
 
-  var autoCompleteInput = function(input, map, service) {
+  var autoCompleteInput = function (input, map, service) {
     var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.addListener("place_changed", function() {
+    autocomplete.addListener("place_changed", function () {
       var dest = input.value;
 
       var request = {
@@ -356,7 +482,7 @@ $(document).ready(function() {
         fields: ["name", "geometry"]
       };
       if (input == document.getElementById("destination")) {
-        service.findPlaceFromQuery(request, function(results, status) {
+        service.findPlaceFromQuery(request, function (results, status) {
           console.log(results, status);
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
@@ -393,7 +519,7 @@ $(document).ready(function() {
       position: place.geometry.location
     });
 
-    google.maps.event.addListener(marker, "click", function() {
+    google.maps.event.addListener(marker, "click", function () {
       infoWindow.setContent(place.name);
       infoWindow.open(map, this);
     });
@@ -407,14 +533,14 @@ $(document).ready(function() {
       icon: "images/mylocation.png",
       animation: google.maps.Animation.DROP
     });
-    google.maps.event.addListener(marker, "click", function() {
+    google.maps.event.addListener(marker, "click", function () {
       infoWindow.setContent("You're Here");
       infoWindow.open(map, this);
     });
 
-    google.maps.event.addListener(marker, "drag", function(event) {
+    google.maps.event.addListener(marker, "drag", function (event) {
       geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ location: event.latLng }, function(results, status) {
+      geocoder.geocode({ location: event.latLng }, function (results, status) {
         if (status === "OK") {
           if (results[0]) {
             document.getElementById("destination").value =
@@ -453,7 +579,7 @@ $(document).ready(function() {
         position: location,
         map: map,
         animation: google.maps.Animation.DROP,
-        icon: "images/taxi.png"
+        icon: icon
       });
 
       markers.push(marker);
@@ -464,16 +590,18 @@ $(document).ready(function() {
   function createDynamicMarker(iniitialMarker) {
     var position = pathLine.length - 1;
 
-    var timer = setInterval(function() {
+    var timer = setInterval(function () {
       var newPosition = {
         lat: pathLine[position].lat(),
         lng: pathLine[position].lng()
       };
+      var heading = google.maps.geometry.spherical.computeHeading(iniitialMarker.getPosition(), new google.maps.LatLng(newPosition));
+      icon.rotation = heading;
       iniitialMarker.setMap(null);
       iniitialMarker = new google.maps.Marker({
         position: newPosition,
         map: map,
-        icon: "images/taxi.png"
+        icon: icon
       });
       position -= 1;
       if (position < 0) {
@@ -486,16 +614,18 @@ $(document).ready(function() {
   function createDynamicMarkerOnRoute(nearestMarker) {
     var position = 0;
 
-    var timer = setInterval(function() {
+    var timer = setInterval(function () {
       var newPosition = {
         lat: pathLineMain[position].lat(),
         lng: pathLineMain[position].lng()
       };
+      var heading = google.maps.geometry.spherical.computeHeading(nearestMarker.getPosition(), new google.maps.LatLng(newPosition));
+      icon.rotation = heading;
       nearestMarker.setMap(null);
       nearestMarker = new google.maps.Marker({
         position: newPosition,
         map: map,
-        icon: "images/taxi.png"
+        icon: icon
       });
       position += 1;
       if (position >= pathLineMain.length) {
@@ -526,7 +656,7 @@ $(document).ready(function() {
 
   function reverseGeocode(marker) {
     geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ location: marker }, function(results, status) {
+    geocoder.geocode({ location: marker }, function (results, status) {
       console.log("My result--> ", results[0].formatted_address);
       if (status === "OK") {
         if (results[0]) {
