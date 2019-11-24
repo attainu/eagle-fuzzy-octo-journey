@@ -13,6 +13,7 @@
   margin-bottom: 5%;
 }
 .contact-form .form-control {
+  font-size: inherit;
   border-radius: 1rem !important;
 }
 
@@ -29,6 +30,7 @@
   color: #1bbc9b;
 }
 div .btnContact {
+  font-size: inherit;
   min-width: 150px;
   border: none;
   border-radius: 1rem;
@@ -47,4 +49,3 @@ div .btnContact {
   border: none;
   cursor: pointer;
 }
-
