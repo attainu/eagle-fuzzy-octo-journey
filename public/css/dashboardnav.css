@@ -379,6 +379,7 @@ Ride Planner Styles
   background-color: #2b383e;
   border-bottom: solid 2px #1bbc9b;
   border-radius: 30px;
+  border: none;
 }
 #ride-planner .row li a {
   color: #222222;
@@ -414,8 +415,12 @@ Ride Planner Styles
 }
 .input-group-text {
   line-height: 2;
+  margin-left: -1px;
   font-size: 15px;
-  padding-right: 25px;
+  background: rgb(57, 218, 186);
+  color: #fff;
+  font-weight: bold;
+  
 }
 .input-ride-group {
   margin-top: 5px;
