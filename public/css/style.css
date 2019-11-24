@@ -87,6 +87,7 @@ input {
 }
 
 .signup-form .form-control {
+  font-size: 1.4rem;
   min-height: 38px;
   box-shadow: none !important;
   border-width: 0 0 1px 0;

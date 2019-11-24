@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../css/dashboardnav.css">
     <link rel="stylesheet" href="../css/popUp.css">
@@ -25,7 +25,12 @@
         integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/login-modal.css">
     <link rel="stylesheet" href="../css/support.css">
-
+    <link rel="stylesheet" href="../css/profileModal.css">
+    <style>
+        div.modal-backdrop {
+            display: none !important;
+        }
+    </style>
 
 </head>
 
@@ -54,27 +59,21 @@
 
                 </li>
 
-                <li {{#ifCond page_name "rides"}}class="active1" {{/ifCond}}>
-                    <a href="/dashboard/rides">
+                <li {{#ifCond page_name "profile"}}class="active1" {{/ifCond}}>
+                    <a href="#rides" data-toggle="modal" data-backdrop="false" data-dismiss="modal">
                         <i class="fas fa-car" id="sizeId"></i>
                         <span id="sidebar-items">Rides</span>
                     </a>
+                </li>
 
-                </li>
-                <li {{#ifCond page_name "billing"}}class="active1" {{/ifCond}}>
-                    <a href="/dashboard/billing">
-                        <i class="fas fa-credit-card" id="sizeId"></i>
-                        <span id="sidebar-items">Billing</span>
-                    </a>
-                </li>
                 <li {{#ifCond page_name "profile"}}class="active1" {{/ifCond}}>
-                    <a href="/dashboard/profile">
+                    <a href="#profile" data-toggle="modal" data-backdrop="false" data-dismiss="modal">
                         <i class="fas fa-user" id="sizeId"></i>
                         <span id="sidebar-items">Profile</span>
                     </a>
                 </li>
                 <li {{#ifCond page_name "support"}}class="active1" {{/ifCond}}>
-                    <a href="#theModal" data-toggle="modal">
+                    <a href="#theModal" data-toggle="modal" data-dismiss="modal">
                         <i class="fas fa-life-ring" id="sizeId"></i>
                         <span id="sidebar-items">Support</span>
                     </a>
@@ -102,6 +101,8 @@
 
 
         {{{body}}}
+
+        {{> rides }} {{> profile }}
 
 
 
@@ -138,6 +139,13 @@
                     $('#sidebarCollapse').hide()
                 });
             });
+            $('.modal').on('show.bs.modal', function () {
+                $('.modal').not($(this)).each(function () {
+                    $(this).modal('hide');
+                });
+            });
+            $('#profile #rides').data('bs.modal', null);
+
 
 
 
@@ -163,7 +171,7 @@
         crossorigin="anonymous"></script>
 
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGy493c6wH8i1UTUA-03QwEOzsEpuV78&libraries=places"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGy493c6wH8i1UTUA-03QwEOzsEpuV78&libraries=places&callback=init"></script>
     <script type="text/javascript" src="../js/mainMap.js"></script>
     <script src="../js/support.js"></script>
 </body>

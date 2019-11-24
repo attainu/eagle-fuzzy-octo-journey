@@ -9,11 +9,13 @@ $(document).ready(function() {
   var service;
   var infoWindow;
   var origin;
+  var org;
   var geocoder;
   var markers = [];
   var minDistance;
   var directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
+  var matService = new google.maps.DistanceMatrixService();
   var pathLine;
   var pathLineMain;
   var source;
@@ -86,7 +88,6 @@ $(document).ready(function() {
     //var delhi = new google.maps.LatLng(28.625671, 77.186626);
 
     // HTML5 geolocation.
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         function(position) {
@@ -95,6 +96,7 @@ $(document).ready(function() {
             lng: position.coords.longitude
           };
           origin = pos;
+          placeid = pos;
           console.log(origin);
           infoWindow = new google.maps.InfoWindow();
           var source = document.getElementById("destination");
@@ -113,7 +115,8 @@ $(document).ready(function() {
           //reverse geocoding
           geocoder = new google.maps.Geocoder();
           geocoder.geocode({ location: origin }, function(results, status) {
-            console.log("My result--> ", results[0].geometry.location.lat());
+            console.log("My result--> ", results);
+
             if (status === "OK") {
               if (results[0]) {
                 document.getElementById("destination").value =
@@ -158,6 +161,7 @@ $(document).ready(function() {
     //Handling When place is changed in input box by he user
 
     var onChangeHandler = function() {
+      calculateDistance(origin);
       calculateAndDisplayRoute(directionsService, directionsRenderer, null);
     };
     document
@@ -259,8 +263,9 @@ $(document).ready(function() {
         return alert("Enter Destination");
       }
 
-      source = document.getElementById("destination").value;
+      source = origin;
       destination = document.getElementById("destination2").value;
+      console.log(source);
 
       //   $(".bg-modal").fadeIn(1000);
       setTimeout(function() {
@@ -275,9 +280,11 @@ $(document).ready(function() {
       });
       $(".click-temp").hide();
     });
+
     $("#login-form").on("submit", function(event) {
       console.log("event triggered");
       event.preventDefault();
+
       findNearestMarker();
     });
     $(".btn-2").on("click", function() {
@@ -296,14 +303,16 @@ $(document).ready(function() {
       {
         origin: { query: document.getElementById("destination").value },
         destination: { query: document.getElementById("destination2").value },
-        //origin: {query : source},
-        //destination: {query : destination},
         travelMode: "DRIVING"
       },
       function(response, status) {
+        console.log("status " + status);
         if (status === "OK") {
           directionsRenderer.setDirections(response);
-
+          var distance = response.routes[0].legs[0].distance.value;
+          var duration = response.routes[0].legs[0].duration.value;
+          alert(duration);
+          calculateandDisplayRate(distance, duration);
           if (nearestMarker != null) {
             pathLineMain = response.routes[0].overview_path;
             createDynamicMarkerOnRoute(nearestMarker);
@@ -315,6 +324,19 @@ $(document).ready(function() {
     );
   }
 
+  function calculateandDisplayRate(distance, duration) {
+    let distinKm = (distance / 1000).toFixed(2);
+    let durinMin = (duration / 60).toFixed(2);
+    console.log(typeof distinKm + " " + durinMin);
+    const initFare = 175.0;
+    const farePerKm = 6.0;
+    const farePerMin = 2;
+    const finalRate =
+      initFare + farePerKm * Number(distinKm) + farePerMin * Number(durinMin);
+    console.log(finalRate + " " + typeof finalRate);
+    let rideRate = document.getElementById("rideRate");
+    rideRate.innerHTML = `${finalRate.toFixed(2)}`;
+  }
   function calculateAndDisplayRouteFromCab(
     directionsService,
     directionsRenderer,
@@ -332,6 +354,7 @@ $(document).ready(function() {
       function(response, status) {
         if (status === "OK") {
           directionsRenderer.setDirections(response);
+
           console.log(
             "Checking response--->",
             response.routes[0].overview_path
@@ -366,7 +389,6 @@ $(document).ready(function() {
               lat: results[0].geometry.location.lat(),
               lng: results[0].geometry.location.lng()
             };
-
             if (input == document.getElementById("destination")) {
               console.log("firs6 search-->", origin);
               origin = location;

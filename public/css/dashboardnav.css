@@ -268,6 +268,7 @@ a.article:hover {
 #dashlogout {
   border-radius: 0;
   width: 200px;
+  font-size: 15px;
 }
 .btn-info {
   float: right;
@@ -287,7 +288,7 @@ a.article:hover {
 }
 .accordion .card-header h2 {
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
@@ -339,4 +340,111 @@ a.article:hover {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
+}
+
+/* 
+
+Ride Planner Styles
+
+*/
+
+#ride-planner {
+  position: absolute;
+  top: 40px;
+  left: 335px;
+  min-width: 60%;
+  height: 130px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #404040e3;
+  border-radius: 5px;
+  color: #fff;
+  z-index: 1;
+}
+#ride-planner.row.wigets-row button {
+  background-color: #1bbc9b;
+  border-radius: 0px;
+  border-bottom: solid 2px transparent;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  font-size: 14px;
+  padding: 9px 25px 9px 25px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  font-family: Roboto;
+}
+#ride-planner.row.wigets-row button:hover {
+  background-color: #2b383e;
+  border-bottom: solid 2px #1bbc9b;
+  border-radius: 30px;
+}
+#ride-planner .row li a {
+  color: #222222;
+  text-decoration: none;
+}
+
+#ride-planner .row.wigets-row li a:hover {
+  color: #1bbc9b;
+}
+
+#ride-planner.row.wigets-row ul li {
+  margin-right: 2px;
+  float: left;
+  text-align: center;
+  color: #222222;
+  width: 150px;
+  background-color: #f5f5f5;
+  height: 92px;
+}
+#ride-planner .form-control:focus {
+  color: #464a4c;
+  border-color: #75c75a;
+  outline: 0;
+}
+
+.ride-type {
+  margin-top: 7px;
+}
+.ride-from,
+.ride-to {
+  line-height: 2;
+  font-size: 15px;
+}
+.input-group-text {
+  line-height: 2;
+  font-size: 15px;
+  padding-right: 25px;
+}
+.input-ride-group {
+  margin-top: 5px;
+  padding: 0 5px 0 2px;
+}
+#vehicle {
+  max-width: 2000px;
+  position: relative;
+  top: 26px;
+  height: 40px;
+}
+
+.ride-card {
+  height: 110px;
+}
+
+.card .user-card-block {
+  margin: auto;
+  padding: 0px;
+}
+
+.user-card-block h2 {
+  color: #fff;
+}
+.effect5 {
+  -webkit-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5),
+    0 10px 8px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5), 0 10px 8px rgba(0, 0, 0, 0.22);
+  -ms-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5), 0 10px 8px rgba(0, 0, 0, 0.22);
+  -o-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5), 0 10px 8px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5), 0 10px 8px rgba(0, 0, 0, 0.22);
 }
