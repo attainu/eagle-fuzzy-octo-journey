@@ -1,4 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
+
+  var rideHistory;
+  var markerOrigin;
+
+
+  var userSession = [];
   $(".column-center").hide();
 
   $(".bg-modal-arrived").hide();
@@ -19,11 +25,52 @@ $(document).ready(function() {
     anchor: new google.maps.Point(10, 25) // orig 10,50 back of car, 10,0 front of car, 10,25 center of car
   };
 
+  $.ajax({
+
+    url: "/sessionTest",
+    method: "GET",
+    success: function (response) {
+
+      if (response.status == false) {
+        $("#dashlogout").hide();
+      }
+      else {
+        console.log("First response--->", response)
+        userSession.push(response)
+        $("#dashlogout").show();
+        $.ajax({
+
+          url: "/user/" + userSession[0].data["_id"],
+          method: "GET",
+          success: function (data) {
+            // console.log("Rides-info after get--->",response);
+            rideHistory = data;
+            console.log("ride historuy--->", rideHistory)
+          },
+          error: function (error) {
+            console.log(error);
+          }
+
+
+        });
+      }
+
+      //$('#SuccessMsg').html(msg);
+    },
+
+    error: function (error) {
+      console.log(error);
+    }
+
+  })
+
+
+
   var map;
   var service;
   var infoWindow;
   var origin;
-  var geocoder;
+  var geocoder ;
   var markers = [];
   var minDistance;
   var directionsService = new google.maps.DirectionsService();
@@ -103,7 +150,7 @@ $(document).ready(function() {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        function(position) {
+        function (position) {
           var pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
@@ -126,7 +173,7 @@ $(document).ready(function() {
 
           //reverse geocoding
           geocoder = new google.maps.Geocoder();
-          geocoder.geocode({ location: origin }, function(results, status) {
+          geocoder.geocode({ location: origin }, function (results, status) {
             console.log("My result--> ", results[0].geometry.location.lat());
             if (status === "OK") {
               if (results[0]) {
@@ -140,7 +187,7 @@ $(document).ready(function() {
             }
           });
         },
-        function() {
+        function () {
           handleLocationError(true, infoWindow, map.getCenter());
         }
       );
@@ -171,7 +218,14 @@ $(document).ready(function() {
 
     //Handling When place is changed in input box by he user
 
-    var onChangeHandler = function() {
+    var onChangeHandler = function () {
+      /*console.log("Input--->",document.getElementById("destination2").value)
+      var geocodedAdd=geocodeAddress(document.getElementById("destination").value,
+      document.getElementById("destination2").value)
+      console.log("Geocoded address",geocodedAdd)
+      var distanceSourceDest = google.maps.geometry.spherical.computeDistanceBetween(geocodedAdd[0],geocodedAdd[1]);*/
+      var price = Math.floor((Math.random() * 500) + 70)
+      $("#rideRate").text(price.toString());
       calculateAndDisplayRoute(directionsService, directionsRenderer, null);
     };
     document
@@ -180,7 +234,7 @@ $(document).ready(function() {
 
     //Finding nearest cab to the source location
 
-    var findNearestMarker = function() {
+    var findNearestMarker = function () {
       var nearestMarker = markers[0];
       console.log(markers);
       minDistance = findDistance(origin, markers[0]);
@@ -203,7 +257,7 @@ $(document).ready(function() {
 
       // Remove the collected markers
 
-      setTimeout(function() {
+      setTimeout(function () {
         removeMarkers(extraMarkers);
         calculateAndDisplayRouteFromCab(
           directionsService,
@@ -231,7 +285,7 @@ $(document).ready(function() {
          $(".click-temp").hide(); */
       $("#sidebar").removeClass("active");
       $("#sidebarCollapse").show();
-      setTimeout(function() {
+      setTimeout(function () {
         $("#login-modal").modal("hide");
       }, 1000);
       $("#cabbyName").text("Name: " + cabby.name);
@@ -240,16 +294,29 @@ $(document).ready(function() {
         .removeClass("booking-card")
         .addClass("booking-card-start")
         .fadeIn(1500);
-      setTimeout(function() {
+      setTimeout(function () {
         $(".booking-card-start")
           .removeClass("booking-card-start")
           .addClass("booking-card")
           .fadeIn(1000);
       }, 3000);
 
-      var onClickHandler = function() {
+      var onClickHandler = function () {
         $(".bg-modal-arrived").fadeOut(700);
         $(".btn-2").attr("disabled", true);
+        markerOrigin.setMap(null); // Set origin marker to null after cab assignmnent
+        $.ajax({
+
+          url: "/user/" + userSession[0].data["_id"],
+          method: "POST",
+          data: { time: new Date(), from: source, to: destination, fare: 250, status: true },
+          success: function (response) {
+            console.log("Rides-info--->", response);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        })
         calculateAndDisplayRoute(
           directionsService,
           directionsRenderer,
@@ -258,17 +325,42 @@ $(document).ready(function() {
       };
 
       //On Clicks
-      $(".btn-cancel").on("click", function() {
-        location.reload();
+      $(".btn-cancel").on("click", function () {
+
+        console.log("Session holder 2--->", userSession);
+        /* $.ajax({
+
+          url: "/user/" + userSession[0].data["_id"],
+          method: "GET",
+          success: function (response) {
+            // console.log("Rides-info after get--->",response);
+          },
+          error: function (error) {
+            console.log(error);
+          } */
+        $.ajax({
+
+          url: "/user/" + userSession[0].data["_id"],
+          method: "POST",
+          data: { time: new Date(), from: source, to: destination, fare: 250, status: false },
+          success: function (response) {
+            console.log("Rides-info--->", response);
+            location.reload();
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        })
       });
+
       $(".btn-ride").on("click", onClickHandler);
-      $(".btn-reached").on("click", function() {
+      $(".btn-reached").on("click", function () {
         location.reload();
       });
     };
 
     //document.getElementById("searchCabs").addEventListener("click", findNearestMarker);
-    document.getElementById("searchCabs").addEventListener("click", function() {
+    document.getElementById("searchCabs").addEventListener("click", function () {
       if (document.getElementById("destination2").value == "") {
         return alert("Enter Destination");
       }
@@ -277,130 +369,185 @@ $(document).ready(function() {
       destination = document.getElementById("destination2").value;
 
       //   $(".bg-modal").fadeIn(1000);
-      setTimeout(function() {
-        $("#login-modal").modal("show");
-      }, 1000);
-      // $(".column-center").show();
 
-      $("#sidebar").toggleClass("active");
-      document.querySelectorAll("#sizeId").forEach(ele => {
-        ele.classList.add("icon-size");
-        $("#sidebarCollapse").hide();
-      });
-      $(".click-temp").hide();
+      if (userSession.length == 0) {
+        setTimeout(function () {
+          $("#login-modal").modal("show");
+        }, 1000);
+        // $(".column-center").show();
+
+        $("#sidebar").toggleClass("active");
+        document.querySelectorAll("#sizeId").forEach(ele => {
+          ele.classList.add("icon-size");
+          $("#sidebarCollapse").hide();
+        });
+        $(".click-temp").hide();
+      }
+      else {
+        console.log("current session-->", userSession);
+        findNearestMarker();
+      }
     });
 
     //On Login popup click
-    $("#login-form").on("submit", function(event) {
+    $("#login-form").on("submit", function (event) {
       event.preventDefault();
 
       var form = $(this);
 
-      var email = $("#login-email")
-        .val()
-        .trim();
+      var email = $('#login-email').val().trim();
 
-      var password = $("#login-password")
-        .val()
-        .trim();
+      var password = $('#login-password').val().trim();
 
       console.log(email, password);
 
       if (email !== "" && password !== "") {
         $.ajax({
+
           url: "/login",
           method: "POST",
           data: { email: email, password: password },
-          success: function(response) {
-            $("p").text("");
+          success: function (response) {
+            $('p').text("");
             if (response.status == 401) {
-              $("<p/>")
-                .text(response.message)
-                .css("color", "red")
-                .appendTo($("#login-form"));
-            } else {
-              console.log(response.session);
+              $('<p/>').text(response.message).css("color", "red").appendTo($('#login-form'));
+            }
+            else {
+              console.log("My login response--->", response.data);
+              userSession.push(response);
+
               $("#dashlogout").show();
               findNearestMarker();
             }
+          },
+          complete: function () {
+
+            $.ajax({
+
+              url: "/user/" + userSession[0].data["_id"],
+              method: "GET",
+              success: function (data) {
+                // console.log("Rides-info after get--->",response);
+                rideHistory = data;
+                console.log("ride historuy--->", rideHistory)
+              },
+              error: function (error) {
+                console.log(error);
+              }
+
+
+
+
+
+
+            });
             //$('#SuccessMsg').html(msg);
           },
-          error: function(error) {
+          error: function (error) {
             console.log(error);
           }
-        });
+
+        })
       }
     });
 
     //On Register click
 
-    $("#signup-form").on("submit", function(event) {
+    $('#signup-form').on('submit', function (event) {
+
       event.preventDefault();
 
       var form = $(this);
 
-      $("p").text("");
+      $('span').text("");
 
-      var name = $("#signup-name")
-        .val()
-        .trim();
+      var name = $('#signup-name').val().trim();
 
-      var email = $("#signup-email")
-        .val()
-        .trim();
+      var email = $('#signup-email').val().trim();
 
-      var password = $("#signup-password")
-        .val()
-        .trim();
+      var password = $('#signup-password').val().trim();
 
-      var phonenumber = $("#signup-phonenumber")
-        .val()
-        .trim();
+      var phonenumber = $('#signup-phonenumber').val().trim();
 
       console.log(name, email, password, phonenumber);
 
+
       $.ajax({
+
         url: "/signup",
         method: "POST",
-        data: {
-          name: name,
-          email: email,
-          password: password,
-          phonenumber: phonenumber
-        },
-        success: function(response) {
+        data: { name: name, email: email, password: password, phonenumber: phonenumber },
+        success: function (response) {
+
           if (response.status) {
             console.log(response.session);
+
             $("#dashlogout").show();
-            $(".modal-backdrop").hide();
-            $("#signup-content").hide();
-            $("#signup-modal").hide();
+            $(".modal-backdrop").hide()
+            $("#signup-content").hide()
+            $("#signup-modal").hide()
+            userSession.push(response);
+            rideHistory = createUserSession(userSession);
             findNearestMarker();
-          } else {
-            $("<p/>")
-              .text(response.data.message)
-              .css("color", "red")
-              .appendTo($("#signup-form"));
+
+
+
+
           }
+
+          else {
+
+            $('<span/>').text(response.data.message).css("color", "red").appendTo($('#signup-form'));
+          }
+        },
+        complete: function () {
+          $.ajax({
+
+            url: "/user/" + userSession[0].data["_id"],
+            method: "GET",
+            success: function (data) {
+              // console.log("Rides-info after get--->",response);
+              rideHistory = data;
+              console.log("ride historuy--->", rideHistory)
+
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
         }
+
         //$('#SuccessMsg').html(msg);
-      });
-    });
+      })
+
+
+    })
 
     //On logout
-    $("#dashlogout").on("click", function() {
+    $("#dashlogout").on("click", function () {
+
       $.ajax({
+
         url: "/logout",
         method: "POST",
-        success: function(response) {
+        success: function (response) {
+
           if (response.status) {
+            userSession = [];
+            rideHistory = null;
             window.location = "/";
           }
+
+
         }
         //$('#SuccessMsg').html(msg);
-      });
-    });
-    $(".btn-2").on("click", function() {
+
+
+
+      })
+
+    })
+    $(".btn-2").on("click", function () {
       location.reload();
     });
   }
@@ -420,7 +567,7 @@ $(document).ready(function() {
         //destination: {query : destination},
         travelMode: "DRIVING"
       },
-      function(response, status) {
+      function (response, status) {
         if (status === "OK") {
           directionsRenderer.setDirections(response);
 
@@ -449,7 +596,7 @@ $(document).ready(function() {
         destination: { location: marker },
         travelMode: "DRIVING"
       },
-      function(response, status) {
+      function (response, status) {
         if (status === "OK") {
           directionsRenderer.setDirections(response);
           console.log(
@@ -466,9 +613,9 @@ $(document).ready(function() {
     );
   }
 
-  var autoCompleteInput = function(input, map, service) {
+  var autoCompleteInput = function (input, map, service) {
     var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.addListener("place_changed", function() {
+    autocomplete.addListener("place_changed", function () {
       var dest = input.value;
 
       var request = {
@@ -476,7 +623,7 @@ $(document).ready(function() {
         fields: ["name", "geometry"]
       };
       if (input == document.getElementById("destination")) {
-        service.findPlaceFromQuery(request, function(results, status) {
+        service.findPlaceFromQuery(request, function (results, status) {
           console.log(results, status);
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
@@ -513,28 +660,28 @@ $(document).ready(function() {
       position: place.geometry.location
     });
 
-    google.maps.event.addListener(marker, "click", function() {
+    google.maps.event.addListener(marker, "click", function () {
       infoWindow.setContent(place.name);
       infoWindow.open(map, this);
     });
   }
 
   function createLocationMarker(pos) {
-    var marker = new google.maps.Marker({
+     markerOrigin = new google.maps.Marker({
       map: map,
       position: pos,
       draggable: true,
       icon: "images/mylocation.png",
       animation: google.maps.Animation.DROP
     });
-    google.maps.event.addListener(marker, "click", function() {
+    google.maps.event.addListener(markerOrigin, "click", function () {
       infoWindow.setContent("You're Here");
       infoWindow.open(map, this);
     });
 
-    google.maps.event.addListener(marker, "drag", function(event) {
+    google.maps.event.addListener(markerOrigin, "drag", function (event) {
       geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ location: event.latLng }, function(results, status) {
+      geocoder.geocode({ location: event.latLng }, function (results, status) {
         if (status === "OK") {
           if (results[0]) {
             document.getElementById("destination").value =
@@ -584,7 +731,7 @@ $(document).ready(function() {
   function createDynamicMarker(iniitialMarker) {
     var position = pathLine.length - 1;
 
-    var timer = setInterval(function() {
+    var timer = setInterval(function () {
       var newPosition = {
         lat: pathLine[position].lat(),
         lng: pathLine[position].lng()
@@ -600,6 +747,7 @@ $(document).ready(function() {
         map: map,
         icon: icon
       });
+      calculateAndDisplayRouteDynamic(directionsService, directionsRenderer, new google.maps.LatLng(newPosition.lat, newPosition.lng), new google.maps.LatLng(pathLine[0].lat(), pathLine[0].lng()))
       position -= 1;
       if (position < 0) {
         latestMarker = iniitialMarker;
@@ -611,7 +759,7 @@ $(document).ready(function() {
   function createDynamicMarkerOnRoute(nearestMarker) {
     var position = 0;
 
-    var timer = setInterval(function() {
+    var timer = setInterval(function () {
       var newPosition = {
         lat: pathLineMain[position].lat(),
         lng: pathLineMain[position].lng()
@@ -627,6 +775,7 @@ $(document).ready(function() {
         map: map,
         icon: icon
       });
+      calculateAndDisplayRouteDynamic(directionsService, directionsRenderer, new google.maps.LatLng(newPosition.lat, newPosition.lng), new google.maps.LatLng(pathLineMain[pathLineMain.length - 1].lat(), pathLineMain[pathLineMain.length - 1].lng()))
       position += 1;
       if (position >= pathLineMain.length) {
         $(".bg-modal-reached").fadeIn(600);
@@ -656,7 +805,7 @@ $(document).ready(function() {
 
   function reverseGeocode(marker) {
     geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ location: marker }, function(results, status) {
+    geocoder.geocode({ location: marker }, function (results, status) {
       console.log("My result--> ", results[0].formatted_address);
       if (status === "OK") {
         if (results[0]) {
@@ -675,6 +824,104 @@ $(document).ready(function() {
       markers[i].setMap(null);
     }
   }
+
+  function calculateAndDisplayRouteDynamic(directionsService, directionsDisplay, pointA, pointB) {
+    directionsService.route({
+      origin: pointA,
+      destination: pointB,
+      travelMode: google.maps.TravelMode.DRIVING
+    }, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+
+  $("#ridesHistory").on("click", function () {
+
+
+    for (var i = 0; i < 3; i++) {
+
+
+
+      $("<p/>").addClass("card-text").text("Time:" + rideHistory.rides[i].time).appendTo($(".main42").addClass("col text-left"));
+      $("<img/>").attr("src", "images/green.png").height("7px").width("7px").appendTo($(".main42").addClass("col text-left"));
+      $("<span/>").addClass("card-text").text("From:" + rideHistory.rides[i].from).appendTo($(".main42").addClass("col text-left"));
+      $("<img/>").attr("src", "images/red.png").height("7px").width("7px").appendTo($(".main42").addClass("col text-left"));
+      $("<span/>").addClass("card-text").text("To:" + rideHistory.rides[i].to).appendTo($(".main42").addClass("col text-left"));
+      //$("<p/>").text("fare").appendTo($(".main43").addClass("col"));
+
+      $(".main41").appendTo($(".main3").addClass("row"))
+      $(".main42").appendTo($(".main3").addClass("row"))
+      $(".main43").appendTo($(".main3").addClass("row"))
+      $(".main3").appendTo($(".main2").addClass("card-body"))
+      $(".main2").appendTo($(".main").addClass("card w-75"))
+
+
+      $(".main").appendTo($(".top").addClass("modal-body"))
+
+      //$("<p/>").text(rideHistory.rides[i].time).appendTo($(".main").addClass("card w-75"))
+
+    }
+
+
+  });
+
+  function geocodeAddress(source,destination){
+    var src = {} ;
+    var dst = {};
+
+    var geocoder = new google.maps.Geocoder();
+  
+    geocoder.geocode({ "address": source}, function (results, status) {
+      console.log("My result geocode--> ", results[0].geometry.location.lng());
+      src = {
+        lat : results[0].geometry.location.lat(),
+        lng : results[0].geometry.location.lng()
+      }
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+         
+        } else {
+          window.alert("No results found");
+        }
+      } else {
+        window.alert("Geocoder failed due to: " + status);
+      }
+    });
+    geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ "address": destination}, function (results, status) {
+      console.log("My result geocode--> ", results[0].geometry.location.lat());
+      dst = {
+        lat : results[0].geometry.location.lat(),
+        lng : results[0].geometry.location.lng()
+      }
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          
+        } else {
+          window.alert("No results found");
+        }
+      } else {
+        window.alert("Geocoder failed due to: " + status);
+      }
+    });
+    console.log("src,dst--->" ,src,dst);
+
+    return [src , dst];
+  }
+
+
+
+
+
+
+
+
+
 
   //Load Map
   google.maps.event.addDomListener(window, "load", init);

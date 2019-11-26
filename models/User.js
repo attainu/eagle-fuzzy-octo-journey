@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
+var Schema = mongoose.Schema;
 
-const userSchema = mongoose.Schema({
+
+var userSchema = new Schema({
 
         name:{
             type:String,
@@ -36,6 +38,10 @@ const userSchema = mongoose.Schema({
             minlength:[8,'Password\'s length should be atleast 8 characters']
 
         },
+        rides: [{
+            type:  Schema.Types.ObjectId,
+            ref: 'ride'
+        }]
         /*avatar:{
              type: String,
              default:''
