@@ -33,11 +33,11 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="input-group ml-5">
-                                        <input id="name" name="name" type="text" placeholder="Name" required="">
+                                        <input id="name" name="name" type="text" placeholder="Name" required="" disabled>
                                     </div>
                                     <div class="input-group ml-5 mt-4">
                                         <input id="number" name="number" type="tel" placeholder="Mobile Number"
-                                            required="">
+                                            required="" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-md-5 my-auto">
                                     <div class="input-group ml-5">
-                                        <input name="file" type="file" id="profile-pic">
+                                        <input name="file" type="file" id="profile-pic" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="input-group ml-5">
-                                        <input id="email" name="email" type="email" placeholder="Email" required="">
+                                        <input id="email" name="email" type="email" placeholder="Email" required="" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -162,8 +162,11 @@
                 <!--container end-->
 
                 <div class="modal-footer">
-                    <button class="button button-info mt-2" id="form-submit" type="submit">
-                        <span>Save</span>
+                    <button class="button button-info mt-2" id="edit-profile" type="submit">
+                        <span>Edit Profile</span>
+                    </button>
+                     <button class="button button-info mt-2" id="form-submit" type="submit">
+                        <span>Update Profile</span>
                     </button>
                 </div>
 
