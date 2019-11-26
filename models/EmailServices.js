@@ -50,7 +50,6 @@ sendEmail.subscribeMail = function (email, cb) {
 // support mail service
 sendEmail.supportMail = function (data, cb) {
 
-    console.log(data);
     var mailOptions = {
         from: "flashride24x7@gmail.com",
         to: "flashride24x7@gmail.com",
