@@ -26,7 +26,9 @@
                     </li>
                     <li class="menu-fs menu-underline"><a href="#contact" class="pagescroll"> contact</a>
                     </li>
-                    <li class="menu-fs menu-underline"><a href="/dashboard" class="pagescroll">Book A Ride</a>
+                    <li class="menu-fs menu-underline"><a href="#login-modal" data-toggle="modal" class="pagescroll"
+                            id="account-btn">Sign In</a>
+                    <li class="menu-fs menu-underline"><a href="/dashboard" class="pagescroll">Book Ride</a>
                     </li>
 
                 </ul>
@@ -35,7 +37,7 @@
     </div>
 </nav>
 <!--================================= NAVIGATION END =============================================-->
-
+{{> auth}}
 <!--================================= HEADER VIDEO START =============================================-->
 <div class="container-fluid video-section no-padding video-bgimage bgimage-property white-text" id="home">
     <div>
@@ -519,7 +521,7 @@
                     tariff. To receive updates please subscribe below.</p>
             </div>
             <div id="mc_embed_signup">
-                <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding"  id="email-form">
+                <div class="col-md-5 col-sm-6 col-xs-8 column-center no-padding" id="email-form">
                     <div class="form-top">
                         <!--================= YOUR MAILCHIMP ACCOUNT URL HERE ====================-->
                         <form class="subscribe_form" id="subscribe-form" name="subscribe-form" novalidate>
