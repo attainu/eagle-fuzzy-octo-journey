@@ -48,13 +48,15 @@ sendEmail.subscribeMail = function (email, cb) {
 }
 
 // support mail service
-sendEmail.supportMail = function (subject, text1, text2, cb) {
+sendEmail.supportMail = function (data, cb) {
 
+    console.log(data);
     var mailOptions = {
         from: "flashride24x7@gmail.com",
         to: "flashride24x7@gmail.com",
-        subject: "Customer Issue regarding  #" + subject,
-        html: "<h4> Ride Details : " + text1 + "</h4><p> Message : " + text2 + "<P>"
+        subject: "Customer Issue regarding  #" + data.subject,
+        html: "<h4> Query regarding : " + data.subject + "</h4><p> User Details :</p><p> Name:" + data.name +
+            "</P><p> Email :" + data.email + "</p><p> Phone number: " + data.phoneno + "</p><p> Message :" + data.message + "</p>"
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

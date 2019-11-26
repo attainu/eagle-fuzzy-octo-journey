@@ -1,9 +1,10 @@
 $(document).ready(function () {
 
-    $('#contact-form').on('submit', function (e) {
+    $('#contact-form').submit(function (e) {
 
         e.preventDefault();
-
+        $("#submit").attr("disabled", true);
+        
         var data = {
             subject: $('#subject').val(),
             from: $('#from').val(),
@@ -31,6 +32,7 @@ $(document).ready(function () {
     $('#subscribe-form').on('submit', function (e) {
 
         e.preventDefault();
+
         var data = { email: $('#email').val() };
 
         $.post("/subscribemail", data, function () {

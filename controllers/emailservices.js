@@ -38,7 +38,7 @@ sendMailController.subscribeEmail = function (req, res) {
 
 sendMailController.supportEmail = function (req, res) {
 
-    sendMailModel.supportMail(req.body.subject,req.body.text1,req.body.text2, function (error, data) {
+    sendMailModel.supportMail(req.body, function (error, data) {
         if (error) {
 
             res.json({ message: "Error" });
