@@ -70,7 +70,7 @@ $(document).ready(function () {
   var service;
   var infoWindow;
   var origin;
-  var geocoder ;
+  var geocoder;
   var markers = [];
   var minDistance;
   var directionsService = new google.maps.DirectionsService();
@@ -451,37 +451,24 @@ $(document).ready(function () {
       }
     });
 
-    //On Register click
-
+    /*<==========Sign-Up-Form-Start------------------>*/
     $('#signup-form').on('submit', function (event) {
 
       event.preventDefault();
-
       var form = $(this);
-
       $('span').text("");
-
       var name = $('#signup-name').val().trim();
-
       var email = $('#signup-email').val().trim();
-
       var password = $('#signup-password').val().trim();
-
       var phonenumber = $('#signup-phonenumber').val().trim();
-
       console.log(name, email, password, phonenumber);
-
-
       $.ajax({
-
         url: "/signup",
         method: "POST",
         data: { name: name, email: email, password: password, phonenumber: phonenumber },
         success: function (response) {
-
           if (response.status) {
             console.log(response.session);
-
             $("#dashlogout").show();
             $(".modal-backdrop").hide()
             $("#signup-content").hide()
@@ -489,39 +476,30 @@ $(document).ready(function () {
             userSession.push(response);
             rideHistory = createUserSession(userSession);
             findNearestMarker();
-
-
-
-
           }
-
           else {
-
             $('<span/>').text(response.data.message).css("color", "red").appendTo($('#signup-form'));
           }
         },
         complete: function () {
           $.ajax({
-
             url: "/user/" + userSession[0].data["_id"],
             method: "GET",
             success: function (data) {
               // console.log("Rides-info after get--->",response);
               rideHistory = data;
               console.log("ride historuy--->", rideHistory)
-
             },
             error: function (error) {
               console.log(error);
             }
           });
         }
-
         //$('#SuccessMsg').html(msg);
       })
-
-
     })
+    
+    /*<==========Sign-Up-Form-End------------------>*/
 
     //On logout
     $("#dashlogout").on("click", function () {
@@ -667,7 +645,7 @@ $(document).ready(function () {
   }
 
   function createLocationMarker(pos) {
-     markerOrigin = new google.maps.Marker({
+    markerOrigin = new google.maps.Marker({
       map: map,
       position: pos,
       draggable: true,
@@ -869,21 +847,21 @@ $(document).ready(function () {
 
   });
 
-  function geocodeAddress(source,destination){
-    var src = {} ;
+  function geocodeAddress(source, destination) {
+    var src = {};
     var dst = {};
 
     var geocoder = new google.maps.Geocoder();
-  
-    geocoder.geocode({ "address": source}, function (results, status) {
+
+    geocoder.geocode({ "address": source }, function (results, status) {
       console.log("My result geocode--> ", results[0].geometry.location.lng());
       src = {
-        lat : results[0].geometry.location.lat(),
-        lng : results[0].geometry.location.lng()
+        lat: results[0].geometry.location.lat(),
+        lng: results[0].geometry.location.lng()
       }
       if (status === google.maps.GeocoderStatus.OK) {
         if (results[0]) {
-         
+
         } else {
           window.alert("No results found");
         }
@@ -893,15 +871,15 @@ $(document).ready(function () {
     });
     geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({ "address": destination}, function (results, status) {
+    geocoder.geocode({ "address": destination }, function (results, status) {
       console.log("My result geocode--> ", results[0].geometry.location.lat());
       dst = {
-        lat : results[0].geometry.location.lat(),
-        lng : results[0].geometry.location.lng()
+        lat: results[0].geometry.location.lat(),
+        lng: results[0].geometry.location.lng()
       }
       if (status === google.maps.GeocoderStatus.OK) {
         if (results[0]) {
-          
+
         } else {
           window.alert("No results found");
         }
@@ -909,9 +887,9 @@ $(document).ready(function () {
         window.alert("Geocoder failed due to: " + status);
       }
     });
-    console.log("src,dst--->" ,src,dst);
+    console.log("src,dst--->", src, dst);
 
-    return [src , dst];
+    return [src, dst];
   }
 
 
