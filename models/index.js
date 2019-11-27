@@ -2,19 +2,19 @@ const User = require('./User.js');
 
 const mongoose = require('mongoose');
 
-function connect(){
+function connect() {
     return mongoose.connect('mongodb://localhost:27017/CabBookingApp',
-                            {
-                                useNewUrlParser:true, 
-                                useUnifiedTopology:true
-                            }
-                            );
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        }
+    );
 
 }
 
 module.exports = {
-    models:{
-        User:User
+    models: {
+        User: User
     },
-    connect:connect
+    connect: connect
 }
