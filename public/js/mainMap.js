@@ -857,19 +857,31 @@ $(document).ready(function () {
     for (var i = 0; i < rideHistory.rides.length; i++) {
 
 
+      var divWrapper = $("<div/>").addClass("row main-3");
+      var divWrapperLeft = $("<div/>").addClass("main42 col-9 text-left");
+      var divWrapperRight = $("<div/>").addClass("col-3 main43");
+      $("<p/>").addClass("card-text font-weight-bold").text(" Date & Time:" + rideHistory.rides[i].time).appendTo(divWrapperLeft);
+      $("<img/>").attr("src", "images/green.png").css("margin-right","10px").height("7px").width("7px").appendTo(divWrapperLeft);
+      $("<span/>").addClass("card-text").text("From: " + rideHistory.rides[i].from).appendTo(divWrapperLeft);
+      $("<br/>").appendTo(divWrapperLeft);
+      $("<img/>").attr("src", "images/red.png").css("margin-right","10px").height("7px").width("7px").appendTo(divWrapperLeft);
+      $("<span/>").addClass("card-text").text("To: " + rideHistory.rides[i].to).appendTo(divWrapperLeft);
+      $("<p/>").text(rideHistory.rides[i].fare).appendTo(divWrapperRight);
 
-      $("<p/>").addClass("card-text").text("Time:" + rideHistory.rides[i].time).appendTo($(".main42").addClass("col text-left"));
-      $("<img/>").attr("src", "images/green.png").height("7px").width("7px").appendTo($(".main42").addClass("col text-left"));
-      $("<span/>").addClass("card-text").text("From:" + rideHistory.rides[i].from).appendTo($(".main42").addClass("col text-left"));
-      $("<img/>").attr("src", "images/red.png").height("7px").width("7px").appendTo($(".main42").addClass("col text-left"));
-      $("<span/>").addClass("card-text").text("To:" + rideHistory.rides[i].to).appendTo($(".main42").addClass("col text-left"));
-      $("<p/>").text(rideHistory.rides[i].fare).appendTo($(".main43").addClass("col"));
-
-      $(".main41").appendTo($(".main3").addClass("row"))
-      $(".main42").appendTo($(".main3").addClass("row"))
-      $(".main43").appendTo($(".main3").addClass("row"))
-      $(".main3").appendTo($(".main2").addClass("card-body"))
-      $(".main2").appendTo($(".main").addClass("card w-75"))
+      divWrapperLeft.appendTo(divWrapper);
+      divWrapperRight.appendTo(divWrapper);
+      var cardBody = $("<div/>").addClass("card-body main2");
+      var mainCard = $("<div/>").addClass("card w-75 main");
+      divWrapper.appendTo(cardBody);
+      cardBody.appendTo(mainCard);
+      var RidesCard = $("#rides-card");
+      mainCard.appendTo(RidesCard);
+      
+      // $(".main41").appendTo($(".main3").addClass("row"))
+      // $(".main42").appendTo($(".main3").addClass("row"))
+      // $(".main43").appendTo($(".main3").addClass("row"))
+      // $(".main3").appendTo($(".main2").addClass("card-body"))
+      // $(".main2").appendTo($(".main").addClass("card w-75"))
 
 
       $(".main").appendTo($(".top").addClass("modal-body"))
