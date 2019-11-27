@@ -81,6 +81,7 @@ $(document).ready(function () {
   var source;
   var destination;
   var latestMarker;
+  var price;
   
   var cabs = [
     {
@@ -224,6 +225,9 @@ $(document).ready(function () {
     
       calculateAndDisplayRoute(directionsService, directionsRenderer, null);
 
+      
+  
+
 
     };
     document
@@ -307,7 +311,7 @@ $(document).ready(function () {
 
           url: "/user/" + userSession[0].data["_id"],
           method: "POST",
-          data: { time: new Date(), from: source, to: destination, fare: 250, status: true },
+          data: { time: new Date(), from: source, to: destination, fare: price, status: true },
           success: function (response) {
             console.log("Rides-info--->", response);
           },
@@ -362,6 +366,10 @@ $(document).ready(function () {
       if (document.getElementById("destination2").value == "") {
         return alert("Enter Destination");
       }
+
+      console.log("checking fare---->", $("#rideRate").html()  )
+
+      price =  Number($("#rideRate").html());
 
       source = document.getElementById("destination").value;
       destination = document.getElementById("destination2").value;
@@ -458,7 +466,7 @@ $(document).ready(function () {
 
       var form = $(this);
 
-      $('span').text("");
+      $('p').text("");
 
       var name = $('#signup-name').val().trim();
 
@@ -475,7 +483,7 @@ $(document).ready(function () {
 
         url: "/signup",
         method: "POST",
-        data: { name: name, email: email, password: password, phonenumber: phonenumber },
+        data: { name: name, email: email, phonenumber: phonenumber ,password: password },
         success: function (response) {
 
           if (response.status) {
@@ -486,7 +494,7 @@ $(document).ready(function () {
             $("#signup-content").hide()
             $("#signup-modal").hide()
             userSession.push(response);
-            rideHistory = createUserSession(userSession);
+           // rideHistory = createUserSession(userSession);
             findNearestMarker();
 
 
@@ -496,7 +504,7 @@ $(document).ready(function () {
 
           else {
 
-            $('<span/>').text(response.data.message).css("color", "red").appendTo($('#signup-form'));
+            $('<p/>').text(response.data.message).css("color", "red").appendTo($('#signup-form'));
           }
         },
         complete: function () {
@@ -570,7 +578,7 @@ $(document).ready(function () {
         if (status === "OK") {
           var distanceSrctoDest = response.routes[0].legs[0].distance.value;
           var price = parseInt((distanceSrctoDest * 6) / 1000);
-          $("#rideRate").text(price.toString());
+          $("#rideRate").html(price);
           directionsRenderer.setDirections(response);
 
           distanceSrctoDest = response.routes[0].legs[0].distance.value;
@@ -846,7 +854,7 @@ $(document).ready(function () {
   $("#ridesHistory").on("click", function () {
 
 
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < rideHistory.rides.length; i++) {
 
 
 
