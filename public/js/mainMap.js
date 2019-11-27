@@ -2,6 +2,7 @@ $(document).ready(function () {
 
   var rideHistory;
   var markerOrigin;
+  
 
 
   var userSession = [];
@@ -80,6 +81,7 @@ $(document).ready(function () {
   var source;
   var destination;
   var latestMarker;
+  
   var cabs = [
     {
       name: "Rupesh",
@@ -219,14 +221,10 @@ $(document).ready(function () {
     //Handling When place is changed in input box by he user
 
     var onChangeHandler = function () {
-      /*console.log("Input--->",document.getElementById("destination2").value)
-      var geocodedAdd=geocodeAddress(document.getElementById("destination").value,
-      document.getElementById("destination2").value)
-      console.log("Geocoded address",geocodedAdd)
-      var distanceSourceDest = google.maps.geometry.spherical.computeDistanceBetween(geocodedAdd[0],geocodedAdd[1]);*/
-      var price = Math.floor((Math.random() * 500) + 70)
-      $("#rideRate").text(price.toString());
+    
       calculateAndDisplayRoute(directionsService, directionsRenderer, null);
+
+
     };
     document
       .getElementById("destination2")
@@ -342,7 +340,7 @@ $(document).ready(function () {
 
           url: "/user/" + userSession[0].data["_id"],
           method: "POST",
-          data: { time: new Date(), from: source, to: destination, fare: 250, status: false },
+          data: { time: new Date(), from: source, to: destination, fare: price, status: false },
           success: function (response) {
             console.log("Rides-info--->", response);
             location.reload();
@@ -367,6 +365,7 @@ $(document).ready(function () {
 
       source = document.getElementById("destination").value;
       destination = document.getElementById("destination2").value;
+      $("#ride-planner").fadeOut(1000)
 
       //   $(".bg-modal").fadeIn(1000);
 
@@ -547,7 +546,12 @@ $(document).ready(function () {
       },
       function (response, status) {
         if (status === "OK") {
+          var distanceSrctoDest = response.routes[0].legs[0].distance.value;
+          var price = parseInt((distanceSrctoDest * 6) / 1000);
+          $("#rideRate").text(price.toString());
           directionsRenderer.setDirections(response);
+
+          distanceSrctoDest = response.routes[0].legs[0].distance.value;
 
           if (nearestMarker != null) {
             pathLineMain = response.routes[0].overview_path;
@@ -829,7 +833,7 @@ $(document).ready(function () {
       $("<span/>").addClass("card-text").text("From:" + rideHistory.rides[i].from).appendTo($(".main42").addClass("col text-left"));
       $("<img/>").attr("src", "images/red.png").height("7px").width("7px").appendTo($(".main42").addClass("col text-left"));
       $("<span/>").addClass("card-text").text("To:" + rideHistory.rides[i].to).appendTo($(".main42").addClass("col text-left"));
-      //$("<p/>").text("fare").appendTo($(".main43").addClass("col"));
+      $("<p/>").text(rideHistory.rides[i].fare).appendTo($(".main43").addClass("col"));
 
       $(".main41").appendTo($(".main3").addClass("row"))
       $(".main42").appendTo($(".main3").addClass("row"))
