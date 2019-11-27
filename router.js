@@ -14,6 +14,19 @@ router.get("/", function(request, response) {
     layout: "guest.hbs"
   });
 });
+router.get("/login", function(request, response) {
+  response.render("partials/login", {
+    title: "User Login",
+    layout: "guest.hbs"
+  });
+});
+
+router.get("/signup", function(request, response) {
+  response.render("partials/signup", {
+    title: "User Registration",
+    layout: "guest.hbs"
+  });
+});
 
 router.get("/dashboard", function(request, response) {
   response.render("dashboard", {
