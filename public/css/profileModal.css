@@ -26,9 +26,9 @@ div#profile-content {
   min-height: 100vh;
   height: 100%;
   flex-grow: 1;
-  overflow-y: scroll;
 }
 #profile-content > div.modal-body {
+  overflow-y: unset !important;
   width: 100%;
 }
 .scroll-style {

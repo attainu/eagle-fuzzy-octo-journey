@@ -87,7 +87,8 @@
 .booking-card:hover {
   height: 200px;
   width: 200px;
-  background-color: #49ad35;
+  background-color: 1bbc9b;
+  color: #fff;
 }
 .booking-card p {
   color: white;

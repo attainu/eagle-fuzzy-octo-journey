@@ -52,6 +52,7 @@ input {
 .form-control,
 .form-control:focus,
 .input-group-addon {
+  border-bottom: none;
   border-color: #e1e1e1;
   border-radius: 0;
 }

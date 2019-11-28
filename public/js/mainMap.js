@@ -58,6 +58,7 @@ $(document).ready(function() {
   var map;
   var service;
   var infoWindow;
+  var destMarker;
   var origin;
   var geocoder;
   var markers = [];
@@ -601,7 +602,9 @@ $(document).ready(function() {
           directionsRenderer.setDirections(response);
           var leg = response.routes[0].legs[0];
           // makeMarker(leg.start_location, icons.start, "title");
-          new google.maps.Marker({
+          
+
+          destMarker = new google.maps.Marker({
             position: leg.end_location,
             map: map,
             icon: "images/dest.png"
@@ -654,6 +657,9 @@ $(document).ready(function() {
   var autoCompleteInput = function(input, map, service) {
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.addListener("place_changed", function() {
+      if(destMarker){
+        destMarker.setMap(null);
+      }
       var dest = input.value;
 
       var request = {
