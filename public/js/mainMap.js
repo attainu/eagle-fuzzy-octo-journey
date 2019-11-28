@@ -447,11 +447,48 @@ $(document).ready(function() {
       }
     });
 
-    //On Register click
+    $("#profile-info").on("click", function() {
+      $.ajax({
+        url: "/user/" + userSession[0].data["_id"],
+        method: "GET",
 
+        success: function(response) {
+          $("#name").val(response.name);
+          $("#email").val(response.email);
+          $("#phonenumber").val(response.phonenumber);
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    });
+    $("#profile-form").on("submit", function(event) {
+      event.preventDefault();
+      var name = $("#name").val();
+      var email = $("#email").val();
+      var phonenumber = $("#phonenumber").val();
+      var data = {
+        name: name,
+        email: email,
+        phonenumber: phonenumber
+      };
+      
+      $.ajax({
+        url: "/user/" + userSession[0].data["_id"],
+        type: "put",
+        data: data,
+        success: function(response) {
+          alert("Submitted");
+          console.log(response)
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    });
+    /*<==========Sign-Up-Form-Start------------------>*/
     $("#signup-form").on("submit", function(event) {
       event.preventDefault();
-
       var form = $(this);
 
       $("p").text("");
@@ -486,7 +523,6 @@ $(document).ready(function() {
         success: function(response) {
           if (response.status) {
             console.log(response.session);
-
             $("#dashlogout").show();
             $(".modal-backdrop").hide();
             $("#signup-content").hide();
@@ -515,7 +551,6 @@ $(document).ready(function() {
             }
           });
         }
-
         //$('#SuccessMsg').html(msg);
       });
     });
