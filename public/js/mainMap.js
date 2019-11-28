@@ -922,13 +922,21 @@ $(document).ready(function() {
         .text("To: " + rideHistory.rides[i].to)
         .appendTo(divWrapperLeft);
       var Icon = $("<i/>").addClass("fas fa-rupee-sign f-2x");
-      Icon.appendTo($(divWrapperRight));
-      $("<span/>")
-        .addClass("font-weight-bold")
-        .text(rideHistory.rides[i].fare)
-        .appendTo(divWrapperRight);
-      // var Icon = `<i class="fas fa-rupee-sign"></i>`;
 
+      if (!rideHistory.rides[i].status) {
+        $("<span/>")
+          .addClass("font-weight-bold text-danger")
+          .text("Cancelled")
+          .appendTo(divWrapperRight);
+      } else {
+        Icon.appendTo($(divWrapperRight));
+        $("<span/>")
+          .addClass("font-weight-bold")
+          .text(rideHistory.rides[i].fare)
+          .appendTo(divWrapperRight);
+
+        // var Icon = `<i class="fas fa-rupee-sign"></i>`;
+      }
       divWrapperLeft.appendTo(divWrapper);
       divWrapperRight.appendTo(divWrapper);
       var cardBody = $("<div/>").addClass("card-body main2");
