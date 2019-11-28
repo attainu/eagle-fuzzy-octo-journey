@@ -472,14 +472,14 @@ $(document).ready(function() {
         email: email,
         phonenumber: phonenumber
       };
-      
+
       $.ajax({
         url: "/user/" + userSession[0].data["_id"],
         type: "put",
         data: data,
         success: function(response) {
           alert("Submitted");
-          console.log(response)
+          console.log(response);
         },
         error: function(error) {
           console.log(error);
@@ -890,10 +890,12 @@ $(document).ready(function() {
   }
 
   $("#ridesHistory").on("click", function() {
+    var RidesCard = $("#rides-card");
+    RidesCard.empty();
     for (var i = 0; i < rideHistory.rides.length; i++) {
       var divWrapper = $("<div/>").addClass("row main-3");
-      var divWrapperLeft = $("<div/>").addClass("main42 col-9 text-left");
-      var divWrapperRight = $("<div/>").addClass("col-3 main43");
+      var divWrapperLeft = $("<div/>").addClass("main42 col-11 text-left");
+      var divWrapperRight = $("<div/>").addClass("col-1 main43");
       $("<p/>")
         .addClass("card-text font-weight-bold")
         .text(" Date & Time:" + rideHistory.rides[i].time)
@@ -919,17 +921,21 @@ $(document).ready(function() {
         .addClass("card-text")
         .text("To: " + rideHistory.rides[i].to)
         .appendTo(divWrapperLeft);
-      $("<p/>")
+      var Icon = $("<i/>").addClass("fas fa-rupee-sign f-2x");
+      Icon.appendTo($(divWrapperRight));
+      $("<span/>")
+        .addClass("font-weight-bold")
         .text(rideHistory.rides[i].fare)
         .appendTo(divWrapperRight);
+      // var Icon = `<i class="fas fa-rupee-sign"></i>`;
 
       divWrapperLeft.appendTo(divWrapper);
       divWrapperRight.appendTo(divWrapper);
       var cardBody = $("<div/>").addClass("card-body main2");
-      var mainCard = $("<div/>").addClass("card w-75 main");
+      var mainCard = $("<div/>").addClass("card w-100 main");
       divWrapper.appendTo(cardBody);
       cardBody.appendTo(mainCard);
-      var RidesCard = $("#rides-card");
+
       mainCard.appendTo(RidesCard);
 
       // $(".main41").appendTo($(".main3").addClass("row"))
