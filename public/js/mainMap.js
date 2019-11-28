@@ -63,7 +63,9 @@ $(document).ready(function() {
   var markers = [];
   var minDistance;
   var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
+  var directionsRenderer = new google.maps.DirectionsRenderer({
+    suppressMarkers: true
+  });
   var pathLine;
   var pathLineMain;
   var source;
@@ -195,6 +197,7 @@ $(document).ready(function() {
       disableDefaultUI: true
     });
     // Rendering Path on map
+    directionsRenderer.setMap(map);
     directionsRenderer.setMap(map);
 
     function handleLocationError(browserHasGeolocation, infoWindow, origin) {
@@ -596,6 +599,13 @@ $(document).ready(function() {
           var price = parseInt((distanceSrctoDest * 6) / 1000);
           $("#rideRate").html(price);
           directionsRenderer.setDirections(response);
+          var leg = response.routes[0].legs[0];
+          // makeMarker(leg.start_location, icons.start, "title");
+          new google.maps.Marker({
+            position: leg.end_location,
+            map: map,
+            icon: "images/dest.png"
+          });
 
           distanceSrctoDest = response.routes[0].legs[0].distance.value;
 
