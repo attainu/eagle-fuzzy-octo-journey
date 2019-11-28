@@ -88,14 +88,14 @@
 }
 
 select {
-  width: 70%;
+  width: 72%;
   border-radius: 14px;
   padding: 10px 15px;
   margin-top: -26px;
   outline: none;
 }
 .music select {
-  top: -90px;
+  margin-top: -19px;
 }
 .air select {
   width: 193%;

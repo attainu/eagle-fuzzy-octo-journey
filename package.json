@@ -25,9 +25,9 @@
     "express-session": "^1.17.0",
     "md5": "^2.2.1",
     "mongodb": "^3.3.4",
-    "nodemailer": "^6.3.1",
     "mongoose": "^5.7.11",
-    "mongoose-unique-validator": "^2.0.3"
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemailer": "^6.3.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2"
