@@ -116,7 +116,7 @@ router.get("/user/:id", function(req, res) {
       res.json(err);
     });
 });
-
+router.get("/find/:id", controllers.UserController.findOne);
 router.put("/user/:id", controllers.UserController.update);
 
 /**<================Get-Route-To-Get-User-With-Ride-Details-End========================>*/
