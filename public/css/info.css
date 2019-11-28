@@ -95,7 +95,7 @@ select {
   outline: none;
 }
 .music select {
-  width: 326%;
+  top: -90px;
 }
 .air select {
   width: 193%;
