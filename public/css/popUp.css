@@ -53,7 +53,6 @@
   width: 150px;
   height: 20px;
   background-color: #000000b8;
-
   border-radius: 5px;
   align-items: center;
   padding: 20px;
@@ -68,13 +67,27 @@
   transition-property: height, width, background-color;
   transition-duration: 1s, 1s, 1.5s;
 }
+.booking-card p{
+  color: #fff;
+  margin-top: -10px;
+}
+.booking-card img{
+  margin-top: 10px;
+}
+#cabbyName{
+  color: #fff;
+  margin-top: 5px;
+}
+#cabbyNumber{
+  color: #fff;
+  margin-top: 5px;
+}
 .booking-card-start {
   padding: 0;
   overflow: hidden;
-  width: 220px;
-  height: 200px;
-  background-color: #49ad35;
-
+  width: 200px;
+  height: 210px;
+  background-color: #000000b8;
   border-radius: 5px;
   align-items: center;
   padding: 20px;
@@ -85,7 +98,7 @@
   position: relative;
 }
 .booking-card:hover {
-  height: 200px;
+  height: 210px;
   width: 200px;
   background-color: 1bbc9b;
   color: #fff;
