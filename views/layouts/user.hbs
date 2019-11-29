@@ -42,7 +42,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3 class="logo-inline">Flash Ride</h3>
+                <a href="/"><h3 class="logo-inline">Flash Ride</h3></a>
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-times"></i>
                 </button>
@@ -67,7 +67,7 @@
                 </li>
 
                 <li {{#ifCond page_name "profile"}}class="active1" {{/ifCond}}>
-                    <a href="#profile" data-toggle="modal" data-backdrop="false" data-dismiss="modal">
+                    <a href="#profile" data-toggle="modal" data-backdrop="false" id="profile-info" data-dismiss="modal">
                         <i class="fas fa-user" id="sizeId"></i>
                         <span id="sidebar-items">Profile</span>
                     </a>

@@ -1,13 +1,14 @@
 var mongoose = require("mongoose");
-
+const moment = require('moment');
 // Get the Schema constructor
 var Schema = mongoose.Schema;
 
 // Using Schema constructor, create a ProductSchema
 var RideSchema = new Schema({
     time: {
-        type: Date,
-        required: true
+        type: String,
+        // required: true,
+        default: moment().format('LLLL')
     },
     from: {
         type: String,

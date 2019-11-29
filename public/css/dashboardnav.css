@@ -150,6 +150,9 @@ span {
 .logo-inline {
   display: inline-block;
 }
+.logo-inline:hover {
+  color: rgb(255, 255, 255);
+}
 #sidebar ul li a i {
   margin-right: 10px;
 }
@@ -414,13 +417,13 @@ Ride Planner Styles
   font-size: 15px;
 }
 .input-group-text {
-  line-height: 2;
+  line-height: 2.18;
   margin-left: -1px;
   font-size: 15px;
-  background: rgb(57, 218, 186);
+  background: #1bbc9b;
+  border: none;
   color: #fff;
   font-weight: bold;
-  
 }
 .input-ride-group {
   margin-top: 5px;
