@@ -876,17 +876,6 @@ $(document).ready(function () {
       cardBody.appendTo(mainCard);
       var RidesCard = $("#rides-card");
       mainCard.appendTo(RidesCard);
-      
-      // $(".main41").appendTo($(".main3").addClass("row"))
-      // $(".main42").appendTo($(".main3").addClass("row"))
-      // $(".main43").appendTo($(".main3").addClass("row"))
-      // $(".main3").appendTo($(".main2").addClass("card-body"))
-      // $(".main2").appendTo($(".main").addClass("card w-75"))
-
-
-      $(".main").appendTo($(".top").addClass("modal-body"))
-
-      //$("<p/>").text(rideHistory.rides[i].time).appendTo($(".main").addClass("card w-75"))
 
     }
 
