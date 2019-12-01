@@ -81,11 +81,12 @@ https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png
             <div class="modal-body" id="login-modal-body">
                 <form id="login-form" action="#" method="#">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email" required="required">
+                        <input type="text" class="form-control" id="login-email" name="email" placeholder="Email"
+                            required="required">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password"
-                            required="required">
+                        <input type="password" class="form-control" id="login-password" name="password"
+                            placeholder="Password" required="required">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
@@ -119,28 +120,28 @@ https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png
             </div>
             <div class="modal-body" id="signup-modal-body">
                 <div class="signup-form">
-                    <form action="#" method="post">
+                    <form action="#" method="#" id="signup-form" >
 
                         {{!-- <p class="lead">It's free and hardly takes more than 30 seconds.</p> --}}
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="fullname" placeholder="Full Name"
-                                    required="required">
+                                <input type="text" class="form-control" name="fullname" id="signup-name"
+                                    placeholder="Full Name" required="required">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
                                 <input type="email" class="form-control" name="email" placeholder="Email Address"
-                                    required="required">
+                                    required="required" id="signup-email">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="text" class="form-control" name="password" placeholder="Password"
-                                    required="required">
+                                <input type="password" class="form-control" name="password" placeholder="Password"
+                                    required="required" id="signup-password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -150,7 +151,7 @@ https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png
 
                                 </span>
                                 <input type="number" class="form-control" name="phone" placeholder="Phone Number"
-                                    value="+91-">
+                                    value="+91-" id="signup-phonenumber">
                             </div>
                         </div>
                         <div class="form-group">
@@ -188,8 +189,8 @@ https://i.pravatar.cc/45
 " alt="" width="70px" height="70px" style="border-radius: 50%;" id="cabbyAvatar">
         <p id="cabbyArrivedName">Rupesh Sharma</p>
         <div style="display: inline;">
-            <button class="btn btn-success btn-ride">Ride to Destination</button>
-            <button class="btn btn-warning btn-cancel">Cancel Ride</button>
+            <button style="font-size: 12px" class="btn btn-success btn-ride">Ride to Destination</button>
+            <button style="font-size: 12px" class="btn btn-warning btn-cancel">Cancel Ride</button>
         </div>
     </div>
 </div>
@@ -197,6 +198,6 @@ https://i.pravatar.cc/45
     <div class="cab-reached">
         <p class="text-center" id="reached"></p><br>
         <p>Thank You for riding with us</p>
-        <button class="btn btn-success btn-reached">Pay and Return to Dashboard</button>
+        <button style="font-size: 12px" class="btn btn-success btn-reached">Pay and Return to Dashboard</button>
     </div>
 </div>

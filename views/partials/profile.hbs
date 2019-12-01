@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal">×</button>
                 <h4 class="modal-title" id="model-heading" class="text-center">My Profile </h4>
             </div>
-            <div class="modal-body">
+            <div style="overflow-y: unset !important"  class="modal-body">
                 <!-- container start -->
 
                 <div class="nav-wrapper mt-2">
@@ -24,7 +24,7 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-info" role="tabpanel"
                         aria-labelledby="nav-place-tab">
-                        <form action="" method="" class="personal-information mt-4">
+                        <form action="" method="" class="personal-information mt-4" id="profile-form">
                             <div class="row">
                                 <div class="col-md-3">
                                     <span class="tag">Personal info</span><br>
@@ -36,22 +36,12 @@
                                         <input id="name" name="name" type="text" placeholder="Name" required="">
                                     </div>
                                     <div class="input-group ml-5 mt-4">
-                                        <input id="number" name="number" type="tel" placeholder="Mobile Number"
+                                        <input id="phonenumber" name="number" type="text" placeholder="Mobile Number"
                                             required="">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-5">
-                                <div class="col-md-3">
-                                    <span class="tag">Change profile</span><br>
 
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="input-group ml-5">
-                                        <input id="file" name="file" type="file">
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row mt-5">
                                 <div class="col-md-3">
                                     <span class="tag">Account info</span><br>
@@ -64,7 +54,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <button class="button button-info mt-2" id="form-submit" type="submit">
+                                <span>Save</span>
+                            </button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">
@@ -102,14 +94,12 @@
                                     <p class="description font-weight-light">What would you like to listen to?</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <div class="input-group ml-5 mt-4">
-                                        <div class="music">
-                                            <select>
-                                                <option value="" selected>Music</option>
-                                                <option value="1">Yes</option>
-                                                <option value="2">No</option>
-                                            </select>
-                                        </div>
+                                    <div class="music input-group ml-5 mt-4">
+                                        <select>
+                                            <option value="" selected>Music</option>
+                                            <option value="1">Yes</option>
+                                            <option value="2">No</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -163,12 +153,9 @@
                 <!--container end-->
 
                 <div class="modal-footer">
-                    <button class="button button-info mt-2" id="form-submit" type="submit">
-                        <span>Save</span>
-                    </button>
+
                 </div>
 
             </div>
         </div>
-    </div>
     </div>

@@ -30,7 +30,7 @@ const hbs = exphbs.create({
 
 app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
-app.use("/", router);
+
 
 app.use(session({
   name:'CabBookingApp-User-Session',
@@ -40,7 +40,7 @@ app.use(session({
 
   cookie:{
     httpOnly:true,
-    maxAge:120000,
+    maxAge:12000000,
     path:'/',
     samesite:true,
     secure:false
@@ -50,6 +50,19 @@ app.use(session({
 )
 
 app.use('/', router);
+
+
+app.get("/sessionTest" , function(req,res){
+  if(req.session.user){
+    return res.send({
+      status : true ,
+      data : req.session.user
+    })
+  }
+  return res.send({
+    status:false
+  })
+})
 
 db.connect()
 .then( function(){
