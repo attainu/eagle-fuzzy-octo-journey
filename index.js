@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
-const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const router = require("./router.js");
