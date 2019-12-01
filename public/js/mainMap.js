@@ -417,6 +417,7 @@ $(document).ready(function() {
           success: function(response) {
             $("p").text("");
             if (response.status == 401) {
+              $("<p/>").text("");
               $("<p/>")
                 .text(response.message)
                 .css("color", "red")
