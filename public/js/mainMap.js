@@ -4,7 +4,9 @@ $(document).ready(function() {
 
   var userSession = [];
   $(".column-center").hide();
-
+  $("#home-link").on("click", function(){
+    $('.modal').modal('hide');
+  })
   $(".bg-modal-arrived").hide();
   $(".bg-modal-reached").hide();
   $(".booking-card").hide();
@@ -415,11 +417,11 @@ $(document).ready(function() {
           method: "POST",
           data: { email: email, password: password },
           success: function(response) {
-            $("p").text("");
             if (response.status == 401) {
-              $("<p/>").text("");
+              $(".login-error").hide();
               $("<p/>")
                 .text(response.message)
+                .addClass("login-error")
                 .css("color", "red")
                 .appendTo($("#login-form"));
             } else {
@@ -502,7 +504,7 @@ $(document).ready(function() {
       event.preventDefault();
       var form = $(this);
 
-      $("p").text("");
+      $("#signup-error").hide();
 
       var name = $("#signup-name")
         .val()
@@ -544,6 +546,7 @@ $(document).ready(function() {
           } else {
             $("<p/>")
               .text(response.data.message)
+              .attr("id", "signup-error")
               .css("color", "red")
               .appendTo($("#signup-form"));
           }
