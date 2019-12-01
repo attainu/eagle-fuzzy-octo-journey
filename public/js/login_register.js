@@ -1,5 +1,10 @@
 $("document").ready(function() {
   $("#login-form").on("submit", function(event) {
+    $(this)
+      .parent()
+      .find("span")
+      .hide();
+
     event.preventDefault();
 
     var form = $(this);
@@ -42,6 +47,10 @@ $("document").ready(function() {
 });
 
 $("#signup-form").on("submit", function(event) {
+  $(this)
+    .parent()
+    .find("p")
+    .hide();
   event.preventDefault();
 
   var form = $(this);
@@ -74,12 +83,12 @@ $("#signup-form").on("submit", function(event) {
       phonenumber: phonenumber
     },
     success: function(response) {
-      $("span").text("");
+      // $("span").text("");
       console.log(response);
       if (!response.status) {
-        $("<span/>")
+        $("<p/>")
           .text(response.data.message)
-          .attr("id", "signup-error")
+          .attr("id", "login-error")
           .appendTo($("#signup-form"));
       } else {
         location.href = "/dashboard";

@@ -50,3 +50,6 @@ div .btnContact {
   cursor: pointer;
 }
 
+.errorLog {
+  margin-top: 80px !important;
+}

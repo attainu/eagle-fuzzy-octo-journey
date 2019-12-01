@@ -483,7 +483,13 @@ $(document).ready(function() {
         type: "put",
         data: data,
         success: function(response) {
-          alert("Submitted");
+          $(".successLog").hide();
+          $("#profile-form").append(
+            $("<div/>")
+              .text("Profile has been updated successfully!")
+              .addClass("alert alert-success successLog")
+          );
+          // alert("Submitted");
           console.log(response);
         },
         error: function(error) {
@@ -603,7 +609,6 @@ $(document).ready(function() {
           directionsRenderer.setDirections(response);
           var leg = response.routes[0].legs[0];
           // makeMarker(leg.start_location, icons.start, "title");
-          
 
           destMarker = new google.maps.Marker({
             position: leg.end_location,
@@ -658,7 +663,7 @@ $(document).ready(function() {
   var autoCompleteInput = function(input, map, service) {
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.addListener("place_changed", function() {
-      if(destMarker){
+      if (destMarker) {
         destMarker.setMap(null);
       }
       var dest = input.value;
@@ -841,7 +846,7 @@ $(document).ready(function() {
         $("#reached").html("You've Reached: " + destination);
         clearInterval(timer);
       }
-    }, 500);
+    }, 1000);
   }
 
   function findDistance(origin, marker) {
@@ -962,7 +967,6 @@ $(document).ready(function() {
       cardBody.appendTo(mainCard);
 
       mainCard.appendTo(RidesCard);
-
     }
   });
 
