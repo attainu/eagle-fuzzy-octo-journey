@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //import email service controller
-const email = require('./controllers/emailservices.js');
+const email = require("./controllers/emailservices.js");
 
 //importing controllers to use it with express routers
 
@@ -11,7 +11,7 @@ const user = require("./models/User.js");
 
 const controllers = require("./controllers/index.js");
 
-router.get("/", function (request, response) {
+router.get("/", function(request, response) {
   response.render("home", {
     title: "Flash Rides - Flash speed commuting service.",
     layout: "guest.hbs"
@@ -31,35 +31,35 @@ router.get("/signup", function(request, response) {
   });
 });
 
-router.get("/dashboard", function (request, response) {
+router.get("/dashboard", function(request, response) {
   response.render("dashboard", {
     title: "User Dashboard",
     page_name: "dashboard",
     layout: "user.hbs"
   });
 });
-router.get("/dashboard/rides", function (request, response) {
+router.get("/dashboard/rides", function(request, response) {
   response.render("rides", {
     title: "User Rides",
     layout: "user.hbs",
     page_name: "rides"
   });
 });
-router.get("/dashboard/billing", function (request, response) {
-  response.render("billing", {
-    title: "User Billing",
-    layout: "user.hbs",
-    page_name: "billing"
-  });
-});
+// router.get("/dashboard/billing", function (request, response) {
+//   response.render("billing", {
+//     title: "User Billing",
+//     layout: "user.hbs",
+//     page_name: "billing"
+//   });
+// });
 
-router.get("/dashboard/support", function (request, response) {
-  response.render("support", {
-    title: "User Support",
-    layout: "user.hbs",
-    page_name: "support"
-  });
-});
+// router.get("/dashboard/support", function (request, response) {
+//   response.render("support", {
+//     title: "User Support",
+//     layout: "user.hbs",
+//     page_name: "support"
+//   });
+// });
 
 router.post("/signup", controllers.UserController.register);
 
@@ -118,12 +118,11 @@ router.put("/user/:id", controllers.UserController.update);
 
 /**<================Get-Route-To-Get-User-With-Ride-Details-End========================>*/
 
-
 /**<===================================Email-Services-Routes-Start===================================> */
 
-router.post('/sendmail', email.contactUsEmail);
-router.post('/subscribemail', email.subscribeEmail);
-router.post('/supportemail', email.supportEmail);
+router.post("/sendmail", email.contactUsEmail);
+router.post("/subscribemail", email.subscribeEmail);
+router.post("/supportemail", email.supportEmail);
 
 /**<===================================Email-Services-Routes-End=====================================> */
 
