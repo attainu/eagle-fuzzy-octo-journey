@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 const PORT = 3000 || process.env.PORT;
 const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const router = require("./router.js");
 
 const db = require("./models/index.js");
@@ -30,10 +32,17 @@ const hbs = exphbs.create({
 app.engine(".hbs", hbs.engine);
 app.set("view engine", ".hbs");
 
+mongoose.Promise = global.Promise;
+const mdb = mongoose.connection;
+
 app.use(
   session({
     name: "CabBookingApp-User-Session",
     secret: "asdfgthyjuik679843465",
+    store: new MongoStore({
+      mongooseConnection: mdb,
+      autoRemove: "native" // Default
+    }),
     resave: false,
     saveUninitialized: true,
 
