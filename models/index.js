@@ -1,21 +1,20 @@
-const User = require('./User.js');
+const User = require("./User.js");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 function connect() {
-    return mongoose.connect('mongodb+srv://admin:admin@cluster0-cppyl.mongodb.net/flashride?retryWrites=true&w=majority',
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false
-        }
-    );
-
+  return mongoose.connect(process.env.CONNECTIONSTRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  });
 }
 
 module.exports = {
-    models: {
-        User: User
-    },
-    connect: connect
-}
+  models: {
+    User: User
+  },
+  connect: connect
+};
