@@ -19,8 +19,8 @@ $(document).ready(function() {
     var autocompleteEnd = new google.maps.places.Autocomplete(endInput);
 
     map = new google.maps.Map(document.getElementById("gmap"), {
-      center: new google.maps.LatLng(40.450886, -74.338184),
-      zoom: 7
+      center: new google.maps.LatLng(20.5937, 78.9629),
+      zoom: 5
     });
 
     dirDisp.setMap(map);
