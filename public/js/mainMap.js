@@ -453,12 +453,23 @@ $(document).ready(function() {
         });
       }
     });
-
+    //Support onclick session check
+    $("#support-info").on("click", function() {
+      if (userSession == "") {
+        $(".support-session").hide();
+        $(".support-body").append($("<h2/>").text("You're not logged in.").addClass("guest-error"));
+      } else {
+        $(".support-session").show();
+        $(".guest-error").hide();
+      }
+    });
     $("#profile-info").on("click", function() {
+      console.log("if executed from profile: " + userSession);
       if (userSession == "") {
         $("#profile-body").empty();
         $("#profile-body").append($("<h2/>").text("You're not logged in."));
       } else {
+        console.log("else executed from profile");
         $.ajax({
           url: "/user/" + userSession[0].data["_id"],
           method: "GET",
@@ -923,64 +934,64 @@ $(document).ready(function() {
     var RidesCard = $("#rides-card");
     if (userSession == "") {
       RidesCard.empty();
-     RidesCard.append($("<h2/>").text("You're not logged in."));
+      RidesCard.append($("<h2/>").text("You're not logged in."));
     } else {
-    RidesCard.empty();
-    for (var i = 0; i < rideHistory.rides.length; i++) {
-      var divWrapper = $("<div/>").addClass("row main-3");
-      var divWrapperLeft = $("<div/>").addClass("main42 col-11 text-left");
-      var divWrapperRight = $("<div/>").addClass("col-1 main43");
-      $("<p/>")
-        .addClass("card-text font-weight-bold")
-        .text(" Date & Time:" + rideHistory.rides[i].time)
-        .appendTo(divWrapperLeft);
-      $("<img/>")
-        .attr("src", "images/green.png")
-        .css("margin-right", "10px")
-        .height("7px")
-        .width("7px")
-        .appendTo(divWrapperLeft);
-      $("<span/>")
-        .addClass("card-text")
-        .text("From: " + rideHistory.rides[i].from)
-        .appendTo(divWrapperLeft);
-      $("<br/>").appendTo(divWrapperLeft);
-      $("<img/>")
-        .attr("src", "images/red.png")
-        .css("margin-right", "10px")
-        .height("7px")
-        .width("7px")
-        .appendTo(divWrapperLeft);
-      $("<span/>")
-        .addClass("card-text")
-        .text("To: " + rideHistory.rides[i].to)
-        .appendTo(divWrapperLeft);
-      var Icon = $("<i/>").addClass("fas fa-rupee-sign f-2x");
-
-      if (!rideHistory.rides[i].status) {
+      RidesCard.empty();
+      for (var i = 0; i < rideHistory.rides.length; i++) {
+        var divWrapper = $("<div/>").addClass("row main-3");
+        var divWrapperLeft = $("<div/>").addClass("main42 col-11 text-left");
+        var divWrapperRight = $("<div/>").addClass("col-1 main43");
+        $("<p/>")
+          .addClass("card-text font-weight-bold")
+          .text(" Date & Time:" + rideHistory.rides[i].time)
+          .appendTo(divWrapperLeft);
+        $("<img/>")
+          .attr("src", "images/green.png")
+          .css("margin-right", "10px")
+          .height("7px")
+          .width("7px")
+          .appendTo(divWrapperLeft);
         $("<span/>")
-          .addClass("font-weight-bold text-danger")
-          .text("Cancelled")
-          .appendTo(divWrapperRight);
-      } else {
-        Icon.appendTo($(divWrapperRight));
+          .addClass("card-text")
+          .text("From: " + rideHistory.rides[i].from)
+          .appendTo(divWrapperLeft);
+        $("<br/>").appendTo(divWrapperLeft);
+        $("<img/>")
+          .attr("src", "images/red.png")
+          .css("margin-right", "10px")
+          .height("7px")
+          .width("7px")
+          .appendTo(divWrapperLeft);
         $("<span/>")
-          .addClass("font-weight-bold")
-          .text(rideHistory.rides[i].fare)
-          .appendTo(divWrapperRight);
+          .addClass("card-text")
+          .text("To: " + rideHistory.rides[i].to)
+          .appendTo(divWrapperLeft);
+        var Icon = $("<i/>").addClass("fas fa-rupee-sign f-2x");
 
-        // var Icon = `<i class="fas fa-rupee-sign"></i>`;
+        if (!rideHistory.rides[i].status) {
+          $("<span/>")
+            .addClass("font-weight-bold text-danger")
+            .text("Cancelled")
+            .appendTo(divWrapperRight);
+        } else {
+          Icon.appendTo($(divWrapperRight));
+          $("<span/>")
+            .addClass("font-weight-bold")
+            .text(rideHistory.rides[i].fare)
+            .appendTo(divWrapperRight);
+
+          // var Icon = `<i class="fas fa-rupee-sign"></i>`;
+        }
+        divWrapperLeft.appendTo(divWrapper);
+        divWrapperRight.appendTo(divWrapper);
+        var cardBody = $("<div/>").addClass("card-body main2");
+        var mainCard = $("<div/>").addClass("card w-100 main");
+        divWrapper.appendTo(cardBody);
+        cardBody.appendTo(mainCard);
+
+        mainCard.appendTo(RidesCard);
       }
-      divWrapperLeft.appendTo(divWrapper);
-      divWrapperRight.appendTo(divWrapper);
-      var cardBody = $("<div/>").addClass("card-body main2");
-      var mainCard = $("<div/>").addClass("card w-100 main");
-      divWrapper.appendTo(cardBody);
-      cardBody.appendTo(mainCard);
-
-      mainCard.appendTo(RidesCard);
     }
-  }
   });
 
   function geocodeAddress(source, destination) {

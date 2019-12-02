@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   console.log("Support is executed");
   $("#list-1-value-1").on("click", function() {
     $("#model-heading").text("Final price different from estimated");
