@@ -457,17 +457,24 @@ $(document).ready(function() {
     $("#support-info").on("click", function() {
       if (userSession == "") {
         $(".support-session").hide();
-        $(".support-body").append($("<h2/>").text("You're not logged in.").addClass("guest-error"));
+        $(".support-body").append(
+          $("<h2/>")
+            .text("You're not logged in.")
+            .addClass("guest-error")
+        );
       } else {
         $(".support-session").show();
         $(".guest-error").hide();
       }
     });
     $("#profile-info").on("click", function() {
-      console.log("if executed from profile: " + userSession);
       if (userSession == "") {
-        $("#profile-body").empty();
-        $("#profile-body").append($("<h2/>").text("You're not logged in."));
+        $(".profile-body-wrapper").hide();
+        $("#profile-body").append(
+          $("<h2/>")
+            .text("You're not logged in.")
+            .addClass("guest-error")
+        );
       } else {
         console.log("else executed from profile");
         $.ajax({
@@ -483,6 +490,8 @@ $(document).ready(function() {
             console.log("this is profile error " + error);
           }
         });
+        $(".profile-body-wrapper").show();
+        $(".guest-error").hide();
       }
     });
     $("#profile-form").on("submit", function(event) {
@@ -507,6 +516,9 @@ $(document).ready(function() {
               .text("Profile has been updated successfully!")
               .addClass("alert alert-success successLog")
           );
+          setTimeout(function() {
+            $(".alert-success").hide();
+          }, 5000);
           // alert("Submitted");
           console.log(response);
         },
