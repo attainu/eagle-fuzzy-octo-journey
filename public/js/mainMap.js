@@ -456,6 +456,7 @@ $(document).ready(function() {
     //Support onclick session check
     $("#support-info").on("click", function() {
       if (userSession == "") {
+        $(".guest-error").hide();
         $(".support-session").hide();
         $(".support-body").append(
           $("<h2/>")
@@ -469,6 +470,7 @@ $(document).ready(function() {
     });
     $("#profile-info").on("click", function() {
       if (userSession == "") {
+        $(".guest-error").hide();
         $(".profile-body-wrapper").hide();
         $("#profile-body").append(
           $("<h2/>")
