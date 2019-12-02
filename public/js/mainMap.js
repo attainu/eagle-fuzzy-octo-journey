@@ -4,9 +4,9 @@ $(document).ready(function() {
 
   var userSession = [];
   $(".column-center").hide();
-  $("#home-link").on("click", function(){
-    $('.modal').modal('hide');
-  })
+  $("#home-link").on("click", function() {
+    $(".modal").modal("hide");
+  });
   $(".bg-modal-arrived").hide();
   $(".bg-modal-reached").hide();
   $(".booking-card").hide();
@@ -455,19 +455,24 @@ $(document).ready(function() {
     });
 
     $("#profile-info").on("click", function() {
-      $.ajax({
-        url: "/user/" + userSession[0].data["_id"],
-        method: "GET",
+      if (userSession == "") {
+        $("#profile-body").empty();
+        $("#profile-body").append($("<h2/>").text("You're not logged in."));
+      } else {
+        $.ajax({
+          url: "/user/" + userSession[0].data["_id"],
+          method: "GET",
 
-        success: function(response) {
-          $("#name").val(response.name);
-          $("#email").val(response.email);
-          $("#phonenumber").val(response.phonenumber);
-        },
-        error: function(error) {
-          console.log(error);
-        }
-      });
+          success: function(response) {
+            $("#name").val(response.name);
+            $("#email").val(response.email);
+            $("#phonenumber").val(response.phonenumber);
+          },
+          error: function(error) {
+            console.log("this is profile error " + error);
+          }
+        });
+      }
     });
     $("#profile-form").on("submit", function(event) {
       event.preventDefault();
@@ -916,6 +921,10 @@ $(document).ready(function() {
 
   $("#ridesHistory").on("click", function() {
     var RidesCard = $("#rides-card");
+    if (userSession == "") {
+      RidesCard.empty();
+     RidesCard.append($("<h2/>").text("You're not logged in."));
+    } else {
     RidesCard.empty();
     for (var i = 0; i < rideHistory.rides.length; i++) {
       var divWrapper = $("<div/>").addClass("row main-3");
@@ -971,6 +980,7 @@ $(document).ready(function() {
 
       mainCard.appendTo(RidesCard);
     }
+  }
   });
 
   function geocodeAddress(source, destination) {
