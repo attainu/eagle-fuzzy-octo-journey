@@ -463,6 +463,12 @@ $(document).ready(function() {
             .text("You're not logged in.")
             .addClass("guest-error")
         );
+        $(".support-body").append(
+          $("<a/>")
+            .text("Sign In")
+            .attr("href", "/login")
+            .addClass("guest-error login-link")
+        );
       } else {
         $(".support-session").show();
         $(".guest-error").hide();
@@ -476,6 +482,12 @@ $(document).ready(function() {
           $("<h2/>")
             .text("You're not logged in.")
             .addClass("guest-error")
+        );
+        $("#profile-body").append(
+          $("<a/>")
+            .text("Sign In")
+            .attr("href", "/login")
+            .addClass("guest-error login-link")
         );
       } else {
         console.log("else executed from profile");
@@ -948,7 +960,13 @@ $(document).ready(function() {
     var RidesCard = $("#rides-card");
     if (userSession == "") {
       RidesCard.empty();
-      RidesCard.append($("<h2/>").text("You're not logged in."));
+      RidesCard.append($("<h2/>").text("You're not logged in.").addClass("guest-error"));
+      RidesCard.append(
+        $("<a/>")
+          .text("Sign In")
+          .attr("href", "/login")
+          .addClass("guest-error login-link")
+      );
     } else {
       RidesCard.empty();
       for (var i = 0; i < rideHistory.rides.length; i++) {

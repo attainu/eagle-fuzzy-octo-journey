@@ -127,3 +127,15 @@ div#list-content {
   /* overflow-y: unset !important; */
   width: 100%;
 }
+
+.guest-error {
+  margin-top: 150px;
+}
+
+.login-link {
+  color: #00c59e;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 50px;
+  display: block; 
+}
